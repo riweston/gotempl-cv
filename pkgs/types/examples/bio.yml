@@ -1,0 +1,9 @@
+name: foo
+headline: bar
+location: baz
+email: qux
+about: quux
+tags:
+  openToOpportunities: true
+  remote: true
+  fullTime: true

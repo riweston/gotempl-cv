@@ -1,0 +1,32 @@
+- name: microsoftazure
+  iconifyID: logos:microsoft-azure
+  displayName: Azure
+  level: 3
+- name: googlecloud
+  iconifyID: logos:google-cloud
+  displayName: Google Cloud
+  level: 4
+- name: terraform
+  iconifyID: logos:terraform-icon
+  displayName: Terraform
+  level: 4
+- name: github
+  iconifyID: devicon:githubactions
+  displayName: GitHub Actions
+  level: 4
+- name: gnubash
+  iconifyID: mdi:bash
+  displayName: Bash
+  level: 4
+- name: go
+  iconifyID: skill-icons:golang
+  displayName: Go
+  level: 4
+- name: python
+  iconifyID: logos:python
+  displayName: Python
+  level: 4
+- name: kubernetes
+  iconifyID: devicon:kubernetes
+  displayName: Kubernetes
+  level: 4

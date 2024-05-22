@@ -1,30 +1,31 @@
 package layout
 
-//import "github.com/riweston/riweston/views/components"
+import (
+	"github.com/riweston/riweston/views/components"
+)
+
 templ Layout() {
 	<head>
 		<meta charset="UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<title>Online CV</title>
 		<link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css"/>
-		<script src="https://cdn.tailwindcss.com"></script>
-		//<link href="/public/style.css" rel="stylesheet"/>
+		//<script src="https://cdn.tailwindcss.com"></script>
+		<link href="./public/style.css" rel="stylesheet"/>
+		//<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet"/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 	</head>
-	<body>
-		<div class="grid grid-cols-5 grid-rows-5 gap-3">
-			<div>
-				//@components.DisplayPicture()
-				//<p>Card</p>
-			</div>
-			<div class="col-span-2">6</div>
-			<div class="col-span-2 col-start-2 row-start-2">7</div>
-			<div class="col-start-2 row-start-3">8</div>
-			<div class="col-start-3 row-start-3">9</div>
-			<div class="col-start-2 row-start-4">10</div>
-			<div class="col-start-3 row-start-4">11</div>
-			<div class="col-start-1 row-start-2">12</div>
-			<div class="col-start-1 row-start-3">13</div>
-			<div class="col-start-1 row-start-4">14</div>
-		</div>
+	<body class="bg-gray-100 flex flex-col items-center justify-center">
+		<section>Nav</section>
+		<section class="mb-6">
+			@components.NewBio("./public/data/bio.yml")
+		</section>
+		<section>
+			@components.NewSkills("./public/data/skills.yml")
+		</section>
+		<section>Certs</section>
+		<section>Work Experience</section>
+		<section>Projects</section>
 	</body>
 }

@@ -1,4 +1,0 @@
-<h1>Three columns</h1>
-<div>Left</div>
-<div>Middle</div>
-<div>Right</div>

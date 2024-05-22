@@ -1,0 +1,60 @@
+package components
+
+import (
+	"github.com/riweston/riweston/pkgs/types"
+	"fmt"
+	"strings"
+)
+
+func NewSkills(filePath string) templ.Component {
+	skills := &types.SkillDataList{}
+	err := types.ReadYamlFile(filePath, skills)
+	if err != nil {
+		panic(err)
+	}
+	return Skills(*skills)
+}
+
+templ Skills(skillsData types.SkillDataList) {
+	<div class="max-w-3xl w-full sm:w-full md:w-3/4 lg:w-2/3 xl:w-1/2 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden py-4 px-8 mx-auto">
+		<h1 class="text-xl font-bold text-gray-900 mb-4">Skills</h1>
+		<h2 class="text-lg font-bold text-gray-600 mb-3">I already know</h2>
+		<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+			for _, skill := range skillsData {
+				if skill.Level > 2 {
+					@NewSkill(skill)
+				}
+			}
+		</div>
+		<h2 class="text-lg font-bold text-gray-600 mb-3 mt-5">I'm learning</h2>
+	</div>
+}
+
+templ NewSkill(skill types.SkillData) {
+	<div class="flex flex-col mb-4">
+		<!-- Logo and name -->
+		@NewSkillIcon(skill)
+		<!-- Level boxes -->
+		<div class="flex items-center mt-3">
+			<div class="flex space-x-1">
+				for i := 0; i < skill.Level; i++ {
+					<div class="w-6 h-2 bg-blue-900 rounded-[2px]"></div>
+				}
+				for i := skill.Level; i < 5; i++ {
+					<div class="w-6 h-2 bg-gray-200 rounded-[2px]"></div>
+				}
+			</div>
+		</div>
+	</div>
+}
+
+templ NewSkillIcon(skill types.SkillData) {
+	<div class="flex items-center">
+		<img src={ fmt.Sprintf("https://api.iconify.design/%s/%s.svg", strings.Split(skill.IconifyID, ":")[0], strings.Split(skill.IconifyID, ":")[1]) } class="w-8 h-8" alt={ skill.DisplayName }/>
+		<span class="ml-2 text-sm font-semibold text-gray-500">{ skill.DisplayName }</span>
+	</div>
+}
+
+templ NewSkillLearning(skill types.SkillLearningData) {
+	<div class="flex flex-col mb-7 mr-14"></div>
+}

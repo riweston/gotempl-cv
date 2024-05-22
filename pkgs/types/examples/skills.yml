@@ -1,0 +1,6 @@
+- name: go
+  displayName: Go
+  level: 4
+- name: python
+  displayName: Python
+  level: 4

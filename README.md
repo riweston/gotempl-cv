@@ -16,7 +16,8 @@ You can fork this repo and use it as a template for your own CV. You can also us
 
 All the data used to generate the CV is stored the yaml files in the `./public/data` directory. You can edit these files to add your own data.
 
-> [!NOTE] Please make sure you adhere to the types defined in `./pkgs/types` when adding data to the yaml files. This is to ensure that the data is displayed correctly on the CV.
+> [!NOTE]
+> Please make sure you adhere to the types defined in `./pkgs/types` when adding data to the yaml files. This is to ensure that the data is displayed correctly on the CV.
 
 ## How can I contribute?
 
