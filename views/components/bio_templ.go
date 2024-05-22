@@ -11,7 +11,7 @@ import "io"
 import "bytes"
 
 import (
-	"github.com/riweston/riweston/pkgs/types"
+	"github.com/riweston/gotempl-cv/pkgs/types"
 )
 
 func NewBio(filePath string) templ.Component {

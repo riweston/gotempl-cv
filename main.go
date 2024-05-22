@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/a-h/templ"
-	"github.com/riweston/riweston/views/layout"
+	"github.com/riweston/gotempl-cv/views/layout"
 )
 
 func main() {

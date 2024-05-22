@@ -11,7 +11,7 @@ import "io"
 import "bytes"
 
 import (
-	"github.com/riweston/riweston/views/components"
+	"github.com/riweston/gotempl-cv/views/components"
 )
 
 func Layout() templ.Component {

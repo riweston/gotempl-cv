@@ -12,7 +12,7 @@ import "bytes"
 
 import (
 	"fmt"
-	"github.com/riweston/riweston/pkgs/types"
+	"github.com/riweston/gotempl-cv/pkgs/types"
 	"strings"
 )
 

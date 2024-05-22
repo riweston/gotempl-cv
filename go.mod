@@ -1,4 +1,4 @@
-module github.com/riweston/riweston
+module github.com/riweston/gotempl-cv
 
 go 1.22.1
 
