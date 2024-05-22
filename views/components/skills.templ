@@ -12,14 +12,17 @@ func NewSkills(filePath string) templ.Component {
 	if err != nil {
 		panic(err)
 	}
-	return Skills(*skills)
+	return SkillsCard(*skills)
+}
+
+templ SkillsCard(skillsData types.SkillDataList) {
+	@Card(Skills(skillsData))
 }
 
 templ Skills(skillsData types.SkillDataList) {
-	<div class="max-w-3xl w-full sm:w-full md:w-3/4 lg:w-2/3 xl:w-1/2 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden py-4 px-8 mx-auto">
 		<h1 class="text-xl font-bold text-gray-900 mb-4">Skills</h1>
 		<h2 class="text-lg font-bold text-gray-600 mb-3">I already know</h2>
-		<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
 			for _, skill := range skillsData {
 				if skill.Level > 2 {
 					@NewSkill(skill)
@@ -27,7 +30,6 @@ templ Skills(skillsData types.SkillDataList) {
 			}
 		</div>
 		<h2 class="text-lg font-bold text-gray-600 mb-3 mt-5">I'm learning</h2>
-	</div>
 }
 
 templ NewSkill(skill types.SkillData) {

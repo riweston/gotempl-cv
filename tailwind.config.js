@@ -7,6 +7,9 @@ module.exports = {
     "./**/*.{templ,go,html}",
   ],
   theme: {
+    screens: {
+      'xs': '475px',
+    },
     extend: {},
   },
   plugins: [

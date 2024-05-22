@@ -18,12 +18,9 @@ templ Layout() {
 	</head>
 	<body class="bg-gray-100 flex flex-col items-center justify-center">
 		<section>Nav</section>
-		<section class="mb-6">
-			@components.NewBio("./public/data/bio.yml")
-		</section>
-		<section>
-			@components.NewSkills("./public/data/skills.yml")
-		</section>
+		@components.NewBio("./public/data/bio.yml")
+		@components.NewSkills("./public/data/skills.yml")
+
 		<section>Certs</section>
 		<section>Work Experience</section>
 		<section>Projects</section>

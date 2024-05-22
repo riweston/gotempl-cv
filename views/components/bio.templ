@@ -10,21 +10,23 @@ func NewBio(filePath string) templ.Component {
 	if err != nil {
 		panic(err)
 	}
-	return Bio(*bio)
+	return BioCard(*bio)
+}
+
+templ BioCard(bioData types.BioData) {
+	@Card(Bio(bioData))
 }
 
 templ Bio(bioData types.BioData) {
-	<div class="max-w-3xl w-full sm:w-full md:w-3/4 lg:w-2/3 xl:w-1/2 bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden py-4 px-8 mx-auto">
-		<div class="flex items-center">
-			<!-- Profile picture section with location and email -->
-			@ProfilePictureSection(bioData)
-			<!-- Content section -->
-			<div class="flex-grow">
-				<!-- Name and headline -->
-				@NameHeadlineSection(bioData)
-				<!-- Bio description and badges -->
-				@BioDescriptionBadgesSection(bioData)
-			</div>
+	<div class="flex items-center">
+		<!-- Profile picture section with location and email -->
+		@ProfilePictureSection(bioData)
+		<!-- Content section -->
+		<div class="flex-grow">
+			<!-- Name and headline -->
+			@NameHeadlineSection(bioData)
+			<!-- Bio description and badges -->
+			@BioDescriptionBadgesSection(bioData)
 		</div>
 	</div>
 }
