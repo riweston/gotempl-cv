@@ -62,14 +62,8 @@ templ BioDescriptionBadgesSection(bioData types.BioData) {
 	<div class="flex-1">
 		<p class="text-sm mb-3 text-gray-500">{ bioData.About }</p>
 		<div class="flex flex-wrap space-x-2">
-			if bioData.Tags.OpenToOpportunities {
-				@BioDescriptionTag("Open to opportunities")
-			}
-			if bioData.Tags.Remote {
-				@BioDescriptionTag("Remote")
-			}
-			if bioData.Tags.FullTime {
-				@BioDescriptionTag("Full-time")
+			for _, tag := range bioData.Tags {
+				@BioDescriptionTag(tag)
 			}
 		</div>
 	</div>

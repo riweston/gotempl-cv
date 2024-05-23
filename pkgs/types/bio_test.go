@@ -2,8 +2,9 @@ package types
 
 import (
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestReadYamlFile(t *testing.T) {
@@ -30,11 +31,7 @@ func TestReadYamlFile(t *testing.T) {
 				Location: "baz",
 				Email:    "qux",
 				About:    "quux",
-				Tags: BioDataTags{
-					OpenToOpportunities: true,
-					Remote:              true,
-					FullTime:            true,
-				},
+				Tags:     []string{"corge", "grault", "garply"},
 			},
 		},
 	}

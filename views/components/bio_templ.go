@@ -238,20 +238,8 @@ func BioDescriptionBadgesSection(bioData types.BioData) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		if bioData.Tags.OpenToOpportunities {
-			templ_7745c5c3_Err = BioDescriptionTag("Open to opportunities").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		}
-		if bioData.Tags.Remote {
-			templ_7745c5c3_Err = BioDescriptionTag("Remote").Render(ctx, templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-		}
-		if bioData.Tags.FullTime {
-			templ_7745c5c3_Err = BioDescriptionTag("Full-time").Render(ctx, templ_7745c5c3_Buffer)
+		for _, tag := range bioData.Tags {
+			templ_7745c5c3_Err = BioDescriptionTag(tag).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -287,7 +275,7 @@ func BioDescriptionTag(tag string) templ.Component {
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(tag)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/components/bio.templ`, Line: 79, Col: 86}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `views/components/bio.templ`, Line: 73, Col: 86}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {

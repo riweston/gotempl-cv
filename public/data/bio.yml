@@ -10,6 +10,6 @@ about: |-
   strong advocate for automation and quality engineering practices, and as a technical
   leader, supporting and mentoring teams so that we all grow together.
 tags:
-  openToOpportunities: true
-  remote: true
-  fullTime: true
+  - Open to opportunities
+  - Remote
+  - Full-Time

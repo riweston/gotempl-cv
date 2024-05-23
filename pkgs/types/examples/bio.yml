@@ -4,6 +4,6 @@ location: baz
 email: qux
 about: quux
 tags:
-  openToOpportunities: true
-  remote: true
-  fullTime: true
+  - corge
+  - grault
+  - garply

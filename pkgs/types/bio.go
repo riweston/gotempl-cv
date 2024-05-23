@@ -1,24 +1,19 @@
 package types
 
 import (
-	"gopkg.in/yaml.v3"
 	"io"
+
+	"gopkg.in/yaml.v3"
 )
 
 type BioData struct {
-	Name               string      `yaml:"name"`
-	ProfilePicturePath string      `yaml:"profilePicturePath"`
-	Headline           string      `yaml:"headline"`
-	Location           string      `yaml:"location"`
-	Email              string      `yaml:"email"`
-	About              string      `yaml:"about"`
-	Tags               BioDataTags `yaml:"tags"`
-}
-
-type BioDataTags struct {
-	OpenToOpportunities bool `yaml:"openToOpportunities"`
-	Remote              bool `yaml:"remote"`
-	FullTime            bool `yaml:"fullTime"`
+	Name               string   `yaml:"name"`
+	ProfilePicturePath string   `yaml:"profilePicturePath"`
+	Headline           string   `yaml:"headline"`
+	Location           string   `yaml:"location"`
+	Email              string   `yaml:"email"`
+	About              string   `yaml:"about"`
+	Tags               []string `yaml:"tags"`
 }
 
 func (b *BioData) ParseData(reader io.Reader) error {
