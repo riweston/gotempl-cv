@@ -7,7 +7,7 @@ import (
 )
 
 func NewSkills(filePath string) templ.Component {
-	skills := &types.SkillDataList{}
+	skills := &types.SkillData{}
 	err := types.ReadYamlFile(filePath, skills)
 	if err != nil {
 		panic(err)
@@ -15,15 +15,15 @@ func NewSkills(filePath string) templ.Component {
 	return SkillsCard(*skills)
 }
 
-templ SkillsCard(skillsData types.SkillDataList) {
+templ SkillsCard(skillsData types.SkillData) {
 	@Card(Skills(skillsData))
 }
 
-templ Skills(skillsData types.SkillDataList) {
+templ Skills(skillsData types.SkillData) {
 		<h1 class="text-xl font-bold text-gray-900 mb-4">Skills</h1>
 		<h2 class="text-lg font-bold text-gray-600 mb-3">I already know</h2>
 		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-			for _, skill := range skillsData {
+			for _, skill := range skillsData.Skills {
 				if skill.Level > 2 {
 					@NewSkill(skill)
 				}
@@ -32,7 +32,7 @@ templ Skills(skillsData types.SkillDataList) {
 		<h2 class="text-lg font-bold text-gray-600 mb-3 mt-5">I'm learning</h2>
 }
 
-templ NewSkill(skill types.SkillData) {
+templ NewSkill(skill types.Skill) {
 	<div class="flex flex-col mb-4">
 		<!-- Logo and name -->
 		@NewSkillIcon(skill)
@@ -50,13 +50,13 @@ templ NewSkill(skill types.SkillData) {
 	</div>
 }
 
-templ NewSkillIcon(skill types.SkillData) {
+templ NewSkillIcon(skill types.Skill) {
 	<div class="flex items-center">
 		<img src={ fmt.Sprintf("https://api.iconify.design/%s/%s.svg", strings.Split(skill.IconifyID, ":")[0], strings.Split(skill.IconifyID, ":")[1]) } class="w-8 h-8" alt={ skill.DisplayName }/>
 		<span class="ml-2 text-sm font-semibold text-gray-500">{ skill.DisplayName }</span>
 	</div>
 }
 
-templ NewSkillLearning(skill types.SkillLearningData) {
+templ NewSkillLearning(skill types.SkillLearning) {
 	<div class="flex flex-col mb-7 mr-14"></div>
 }

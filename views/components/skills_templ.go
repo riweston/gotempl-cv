@@ -17,7 +17,7 @@ import (
 )
 
 func NewSkills(filePath string) templ.Component {
-	skills := &types.SkillDataList{}
+	skills := &types.SkillData{}
 	err := types.ReadYamlFile(filePath, skills)
 	if err != nil {
 		panic(err)
@@ -25,7 +25,7 @@ func NewSkills(filePath string) templ.Component {
 	return SkillsCard(*skills)
 }
 
-func SkillsCard(skillsData types.SkillDataList) templ.Component {
+func SkillsCard(skillsData types.SkillData) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -49,7 +49,7 @@ func SkillsCard(skillsData types.SkillDataList) templ.Component {
 	})
 }
 
-func Skills(skillsData types.SkillDataList) templ.Component {
+func Skills(skillsData types.SkillData) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -66,7 +66,7 @@ func Skills(skillsData types.SkillDataList) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		for _, skill := range skillsData {
+		for _, skill := range skillsData.Skills {
 			if skill.Level > 2 {
 				templ_7745c5c3_Err = NewSkill(skill).Render(ctx, templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
@@ -85,7 +85,7 @@ func Skills(skillsData types.SkillDataList) templ.Component {
 	})
 }
 
-func NewSkill(skill types.SkillData) templ.Component {
+func NewSkill(skill types.Skill) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -133,7 +133,7 @@ func NewSkill(skill types.SkillData) templ.Component {
 	})
 }
 
-func NewSkillIcon(skill types.SkillData) templ.Component {
+func NewSkillIcon(skill types.Skill) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -196,7 +196,7 @@ func NewSkillIcon(skill types.SkillData) templ.Component {
 	})
 }
 
-func NewSkillLearning(skill types.SkillLearningData) templ.Component {
+func NewSkillLearning(skill types.SkillLearning) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
