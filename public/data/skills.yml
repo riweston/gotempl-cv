@@ -23,3 +23,8 @@ skills:
   - displayName: Kubernetes
     iconifyID: devicon:kubernetes
     level: 4
+skillsLearning:
+  - displayName: Rust
+    iconifyID: devicon:rust
+  - displayName: TypeScript
+    iconifyID: devicon:typescript
