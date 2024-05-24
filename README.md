@@ -19,6 +19,14 @@ All the data used to generate the CV is stored the yaml files in the `./public/d
 > [!NOTE]
 > Please make sure you adhere to the types defined in `./pkgs/types` when adding data to the yaml files. This is to ensure that the data is displayed correctly on the CV.
 
+### Running the server locally
+
+For local development, you can run either `go run main.go` or you can use the `air` tool to run the server. You can install `air` by running `go get -u github.com/cosmtrek/air`. Once you have `air` installed, you can run `air` in the root directory of the project to start the server.
+
+### Updating the certificate data
+
+The certificate data is stored in the `certificates_gen.yml` file in the `./public/data` directory. You can add your own certificates to this file to display them on the CV or you can run the helper command to generate the certificates data for you including the certificate images. To do this, run `go run ./cmd/generate-certs/main.go <credly username>` in the root directory of the project. This will generate the certificates data for you from the credly API.
+
 ## How can I contribute?
 
 If you see any issues with the code, or have any suggestions for improvements, feel free to open an issue or a pull request.
