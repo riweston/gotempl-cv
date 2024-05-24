@@ -1,32 +1,25 @@
-- name: microsoftazure
-  iconifyID: logos:microsoft-azure
-  displayName: Azure
-  level: 3
-- name: googlecloud
-  iconifyID: logos:google-cloud
-  displayName: Google Cloud
-  level: 4
-- name: terraform
-  iconifyID: logos:terraform-icon
-  displayName: Terraform
-  level: 4
-- name: github
-  iconifyID: devicon:githubactions
-  displayName: GitHub Actions
-  level: 4
-- name: gnubash
-  iconifyID: mdi:bash
-  displayName: Bash
-  level: 4
-- name: go
-  iconifyID: skill-icons:golang
-  displayName: Go
-  level: 4
-- name: python
-  iconifyID: logos:python
-  displayName: Python
-  level: 4
-- name: kubernetes
-  iconifyID: devicon:kubernetes
-  displayName: Kubernetes
-  level: 4
+skills:
+  - displayName: Azure
+    iconifyID: logos:microsoft-azure
+    level: 3
+  - displayName: Google Cloud
+    iconifyID: logos:google-cloud
+    level: 4
+  - displayName: Terraform
+    iconifyID: logos:terraform-icon
+    level: 4
+  - displayName: GitHub Actions
+    iconifyID: devicon:githubactions
+    level: 4
+  - displayName: Bash
+    iconifyID: mdi:bash
+    level: 4
+  - displayName: Go
+    iconifyID: skill-icons:golang
+    level: 4
+  - displayName: Python
+    iconifyID: logos:python
+    level: 4
+  - displayName: Kubernetes
+    iconifyID: devicon:kubernetes
+    level: 4

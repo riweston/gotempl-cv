@@ -1,6 +1,12 @@
-- name: go
-  displayName: Go
-  level: 4
-- name: python
-  displayName: Python
-  level: 4
+skills:
+  - displayName: bar
+    iconifyID: logos:baz
+    level: 1
+  - displayName: qux
+    iconifyID: logos:quux
+    level: 2
+skillsLearning:
+  - displayName: quux
+    iconifyID: devicon:corge
+  - displayName: grault
+    iconifyID: devicon:garply

@@ -1,30 +1,43 @@
 package types
 
 import (
-	"gopkg.in/yaml.v3"
 	"io"
+
+	"gopkg.in/yaml.v3"
 )
 
+// SkillData is a struct used to unmarshal the skills.yml file
 type SkillData struct {
-	Name        string `yaml:"name"`
-	IconifyID   string `yaml:"iconifyID"`
-	DisplayName string `yaml:"displayName"`
-	Level       int    `yaml:"level"`
+	// Skills is a list of skills that the user has
+	Skills []Skill `yaml:"skills"`
+	// SkillsLearning is a list of skills that the user is learning
+	SkillsLearning []SkillLearning `yaml:"skillsLearning"`
 }
 
-type SkillDataList []SkillData
+// Skill is a struct that represents a skill that the user has
+type Skill struct {
+	DisplayName string `yaml:"displayName"`
+	// IconifyID uses https://icon-sets.iconify.design/?query=google+cloud to get the icon
+	// For example, the icon for Google Cloud is "logos:google-cloud"
+	IconifyID string `yaml:"iconifyID"`
+	// Level is the level of the skill, this can be a number from 1 to 5
+	Level int `yaml:"level"`
+}
 
-func (s *SkillDataList) ParseData(reader io.Reader) error {
+// ParseData parses the data from the reader into the SkillData and implements the DataParser interface
+func (s *SkillData) ParseData(reader io.Reader) error {
 	return yaml.NewDecoder(reader).Decode(s)
 }
 
-type SkillLearningData struct {
-	Name        string `yaml:"name"`
+// SkillLearning is a struct that represents a skill that the user is learning
+type SkillLearning struct {
 	DisplayName string `yaml:"displayName"`
+	// IconifyID uses https://icon-sets.iconify.design/?query=google+cloud to get the icon
+	// For example, the icon for Google Cloud is "logos:google-cloud"
+	IconifyID string `yaml:"iconifyID"`
 }
 
-type SkillLearningDataList []SkillLearningData
-
-func (s *SkillLearningDataList) ParseData(reader io.Reader) error {
+// ParseData parses the data from the reader into the SkillLearning and implements the DataParser interface
+func (s *SkillLearning) ParseData(reader io.Reader) error {
 	return yaml.NewDecoder(reader).Decode(s)
 }
