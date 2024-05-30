@@ -1,0 +1,55 @@
+package components
+
+import (
+	"github.com/riweston/gotempl-cv/pkgs/types"
+)
+
+func NewWorkExperience(filePath string) templ.Component {
+	WorkExperience := &types.WorkExperienceData{}
+	err := types.ReadYamlFile(filePath, WorkExperience)
+	if err != nil {
+		panic(err)
+	}
+	return WorkExperienceCard(*WorkExperience)
+}
+
+templ WorkExperienceCard(workExperienceData types.WorkExperienceData) {
+	@Card(WorkExperience(workExperienceData))
+}
+
+templ WorkExperience(workExperienceData types.WorkExperienceData) {
+	<h1 class="mb-4">Work Experience</h1>
+	for i, job := range workExperienceData.Jobs {
+		@JobTile(job)
+		if i < len(workExperienceData.Jobs)-1 {
+			<hr class="my-4 mb-4 border-gray-100"/>
+		}
+	}
+}
+
+templ JobTile(job types.Job) {
+	<div class="flex flex-col mb-4">
+		<div class="flex items-center">
+			<img class="h-16 w-16 rounded-full mr-4" src={ job.LogoPath } alt={ job.Company }/>
+			<div class="flex flex-col">
+				//<span class="text-sm font-semibold text-gray-500">{ job.CurrentRole }</span>
+				<h3>{ job.CurrentRole }</h3>
+				//<span class="text-xs font-semibold text-gray-400 mb-0.5">{ job.Company }</span>
+				<h4>{ job.Company }</h4>
+				//<span class="text-xs font-semibold text-gray-400 mb-1">{ job.StartDate } - { job.EndDate }</span>
+				<h4>{ job.StartDate } - { job.EndDate }</h4>
+				//<p class="text-xs font-semibold text-gray-400 mb-1">{ job.Description }</p>
+				<p>{ job.Description }</p>
+				if len(job.PreviousRoles) > 0 {
+					//<span class="text-xs font-semibold text-gray-400 mb-0.5">Previous Roles</span>
+					<h4>Previous Roles</h4>
+					<div class="flex space-x-2">
+						for _, role := range job.PreviousRoles {
+							@NewTextBadge(role)
+						}
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+}

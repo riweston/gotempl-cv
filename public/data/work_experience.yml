@@ -1,0 +1,33 @@
+jobs:
+  - company: Cloudreach
+    logoPath: ./public/images/work-experience-logos/cloudreach.png
+    linkedIn: https://www.linkedin.com/company/cloudreach/
+    website: https://www.cloudreach.com/
+    currentRole: Principal Cloud Systems Engineer
+    startDate: October 2018
+    endDate: now
+    description: |-
+      As a Principal Cloud Systems Engineer, I was responsible for leading the design and
+      implementation of cloud-native applications for our clients. I was also responsible for
+      mentoring and supporting the development team, ensuring that we delivered high-quality
+      solutions that met our clients' requirements.
+    previousRoles:
+      - "Regional Discipline Lead"
+      - "Senior Cloud Systems Engineer"
+      - "Cloud Systems Engineer"
+  - company: TFL
+    logoPath: ./public/images/work-experience-logos/cloudreach.png
+    linkedIn: https://www.linkedin.com/company/cloudreach/
+    website: https://www.cloudreach.com/
+    currentRole: Principal Cloud Systems Engineer
+    startDate: October 2018
+    endDate: now
+    description: |-
+      As a Principal Cloud Systems Engineer, I was responsible for leading the design and
+      implementation of cloud-native applications for our clients. I was also responsible for
+      mentoring and supporting the development team, ensuring that we delivered high-quality
+      solutions that met our clients' requirements.
+    previousRoles:
+      - "Regional Discipline Lead"
+      - "Senior Cloud Systems Engineer"
+      - "Cloud Systems Engineer"
