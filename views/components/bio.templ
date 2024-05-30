@@ -53,15 +53,15 @@ templ ProfilePictureSection(bioData types.BioData) {
 
 templ NameHeadlineSection(bioData types.BioData) {
 	<div class="mb-2">
-		<h5 class="text-2xl font-bold text-gray-900">{ bioData.Name }</h5>
-		<span class="text-md text-gray-600">{ bioData.Headline }</span>
+		<h1>{ bioData.Name }</h1>
+		<h2>{ bioData.Headline }</h2>
 	</div>
 }
 
 templ BioDescriptionBadgesSection(bioData types.BioData) {
 	<div class="flex-1">
-		<p class="text-sm mb-3 text-gray-500">{ bioData.About }</p>
-		<div class="flex flex-wrap space-x-2">
+		<p>{ bioData.About }</p>
+		<div class="flex flex-wrap space-x-2 mt-2">
 			for _, tag := range bioData.Tags {
 				@BioDescriptionTag(tag)
 			}

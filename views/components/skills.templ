@@ -20,14 +20,22 @@ templ SkillsCard(skillsData types.SkillData) {
 }
 
 templ Skills(skillsData types.SkillData) {
-	<h1 class="text-xl font-bold text-gray-900 mb-4">Skills</h1>
-	<h2 class="text-lg font-bold text-gray-600 mb-3">I already know</h2>
-	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+	<div class="mb-4">
+		<h1>Skills</h1>
+		<h2>I already know</h2>
+	</div>
+	<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 		for _, skill := range skillsData.Skills {
 			@NewSkill(skill)
 		}
+		// Add empty div to fill the gap
+		for i := 0; i < 4-len(skillsData.Skills)%4; i++ {
+			<div class="sm:flex-grow"></div>
+		}
 	</div>
-	<h2 class="text-lg font-bold text-gray-600 mb-3 mt-5">I'm learning</h2>
+	<div class="mb-4">
+		<h2>I'm learning</h2>
+	</div>
 	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
 		for _, skill := range skillsData.SkillsLearning {
 			@NewSkillLearning(skill)
@@ -61,10 +69,11 @@ templ NewSkillIcon(skill types.Skill) {
 }
 
 templ NewSkillLearning(skill types.SkillLearning) {
-	<div class="flex flex-col mb-7 mr-14">
+	<div class="flex flex-col mb-4 mr-14">
 		<!-- Logo and name -->
 		<div class="flex items-center">
 			<img src={ fmt.Sprintf("https://api.iconify.design/%s/%s.svg", strings.Split(skill.IconifyID, ":")[0], strings.Split(skill.IconifyID, ":")[1]) } class="w-8 h-8" alt={ skill.DisplayName }/>
+			// <span class="ml-2 text-sm font-semibold text-gray-500">{ skill.DisplayName }</span>
 			<span class="ml-2 text-sm font-semibold text-gray-500">{ skill.DisplayName }</span>
 		</div>
 	</div>
