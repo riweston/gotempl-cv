@@ -1,6 +1,7 @@
 # Manual ignores for the project
 tmp/
 public/style.css
+*_templ.go
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,linux,visualstudiocode,jetbrains+all,node,go,goland+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,linux,visualstudiocode,jetbrains+all,node,go,goland+all
