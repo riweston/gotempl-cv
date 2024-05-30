@@ -7,14 +7,10 @@ module.exports = {
     "./**/*.{templ,go,html}",
   ],
   theme: {
-    screens: {
-      'xs': '475px',
-    },
     extend: {},
   },
   plugins: [
     addIconSelectors(['mdi', 'mdi-light', 'simple-icons', 'logos']),
     require("@tailwindcss/typography"),
-    require('daisyui'),
   ],
 }
