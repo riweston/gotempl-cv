@@ -1,0 +1,130 @@
+projects:
+  - name: Self-Service Developer Landing Zone
+    industry: Public Sector
+    startDate: January 2023
+    endDate: December 2023
+    role: Lead Developer, Cloud Architect
+    teamSize: 7
+    description: |-
+      A self-service platform for creating and lifecycling GCP landing zones. In my role
+      I put together an initial design and proposal for a platform that helps teams to
+      easily provision a GCP environment so that they can focus on delivering value to
+      the organisation. I also led the development of the platform, which was built using
+      a combination of cloud-native technologies delivered by GCP, Github Actions and
+      Terraform.
+    technologies:
+      - displayName: Cloud Functions
+        iconifyID: "logos:google-cloud-functions"
+      - displayName: Cloud Run
+        iconifyID: "logos:google-cloud-run"
+      - displayName: Google Cloud
+        iconifyID: "logos:google-cloud"
+      - displayName: GitHub Actions
+        iconifyID: "devicon:githubactions"
+      - displayName: GKE
+        iconifyID: "devicon:kubernetes"
+      - displayName: Go
+        iconifyID: "logos:go"
+      - displayName: Pub/Sub
+        iconifyID: "simple-icons:googlepubsub"
+      - displayName: Terraform
+        iconifyID: "devicon:terraform"
+      - displayName: Terragrunt
+        iconifyID: "devicon:terraform"
+  - name: GitOps Developer Enablement Platform
+    industry: Banking
+    startDate: November 2021
+    endDate: December 2022
+    role: Lead Developer
+    teamSize: 8
+    description: |-
+      A well architected pattern for deploying and managing AKS clusters using GitOps. In
+      my role I was responsible for the initial technical pre-sales and discovery which
+      led to the design and implementation of a Kubernetes platform on Azure with a view
+      to shifting the organisation to a GitOps model. Additional features included canary
+      deployments, automated testing and ephemeral environments to support UAT and QA.
+    technologies:
+      - displayName: AKS
+        iconifyID: "devicon:kubernetes"
+      - displayName: Azure
+        iconifyID: "logos:microsoft-azure"
+      - displayName: Docker
+        iconifyID: "logos:docker-icon"
+      - displayName: Flux
+        iconifyID: "simple-icons:flux"
+        colour: "#2F74C0"
+      - displayName: GitLab
+        iconifyID: "logos:gitlab"
+      - displayName: Go
+        iconifyID: "logos:go"
+      - displayName: Helm
+        iconifyID: "logos:helm"
+      - displayName: Kustomize
+        iconifyID: "simple-icons:yaml"
+  - name: Shared Services Platform
+    industry: B2B Financial Services
+    startDate: October 2020
+    endDate: November 2021
+    role: Lead Developer
+    teamSize: 5
+    description: |-
+      A Kubernetes platform for shared services and applications. In my role I was
+      responsible for planning and implementing a Kubernetes platform on Azure to host
+      shared services and required to support a new SaaS product from the development
+      team. These features included Vault, Consul, Keycloak, Jenkins and Artifactory. A
+      large degree of focus was placed on standardisation and automation to ensure the
+      platform was easy to operate and maintain. To achieve this I designed a number of
+      deployment patterns to facilitate workload identity, automated DNS and global load
+      balancing.
+    technologies:
+      - displayName: AKS
+        iconifyID: "devicon:kubernetes"
+      - displayName: Artifactory
+        iconifyID: "logos:jfrog"
+      - displayName: Azure
+        iconifyID: "logos:microsoft-azure"
+      - displayName: Consul
+        iconifyID: "logos:consul"
+      - displayName: Go
+        iconifyID: "logos:go"
+      - displayName: Helm
+        iconifyID: "logos:helm"
+      - displayName: Ingress Nginx
+        iconifyID: "logos:nginx"
+      - displayName: Jenkins
+        iconifyID: "logos:jenkins"
+      - displayName: Keycloak
+        iconifyID: "simple-icons:keycloak"
+      - displayName: Terraform
+        iconifyID: "devicon:terraform"
+      - displayName: Vault
+        iconifyID: "devicon:vault"
+  - name: Service Mesh PoC
+    industry: B2B Financial Services
+    startDate: June 2020
+    endDate: September 2020
+    role: Senior Developer
+    teamSize: 4
+    description: |-
+      A proof of concept for a service mesh on Kubernetes. In my role I played a
+      supporting role during the technical pre-sales and discovery phase to produce
+      supporting documentation and a high-level design for a highly technical client.
+      After the completion of the discovery phase I was responsible for the delivery of
+      the chosen service mesh, Istio, and the development of a deployment pattern that
+      could be used to evaluate the viability of Istio as a global load balancing
+      solution.
+    technologies:
+      - displayName: AKS
+        iconifyID: "devicon:kubernetes"
+      - displayName: Azure
+        iconifyID: "logos:microsoft-azure"
+      - displayName: Helm
+        iconifyID: "logos:helm"
+      - displayName: Inspec
+        iconifyID: "simple-icons:chef"
+      - displayName: Istio
+        iconifyID: "simple-icons:istio"
+      - displayName: Jenkins
+        iconifyID: "logos:jenkins"
+      - displayName: Vault
+        iconifyID: "devicon:vault"
