@@ -40,7 +40,9 @@ templ JobTile(job types.Job) {
 					<h4>Previous Roles</h4>
 					<div class="flex space-x-2">
 						for _, role := range job.PreviousRoles {
-							@NewTextBadge(role)
+							@NewBadge(func(opts *BadgeOpts) {
+								opts.DisplayName = role
+							})
 						}
 					</div>
 				}

@@ -1,0 +1,47 @@
+package components
+
+import "github.com/riweston/gotempl-cv/pkgs/types"
+
+func NewProjects(filePath string) templ.Component {
+	projects := &types.ProjectData{}
+	err := types.ReadYamlFile(filePath, projects)
+	if err != nil {
+		panic(err)
+	}
+	return ProjectsCard(*projects)
+}
+
+templ ProjectsCard(projectsData types.ProjectData) {
+	@Card(Projects(projectsData))
+}
+
+templ Projects(projectsData types.ProjectData) {
+	<h1 class="mb-4">Projects</h1>
+	for i, project := range projectsData.Projects {
+		@ProjectTile(project)
+		if i < len(projectsData.Projects)-1 {
+			<hr class="my-4 mb-4 border-gray-100"/>
+		}
+	}
+}
+
+templ ProjectTile(project types.Project) {
+	<div class="mb-4">
+		<h3>{ project.Name }</h3>
+		<p>{ project.Description }</p>
+		<div class="flex flex-wrap">
+			for _, tech := range project.Technologies {
+				<div class="mr-2">
+					//@NewTextBadgeWithLogo(tech.DisplayName, tech.IconifyID)
+					@NewBadgeWithLogo(func(opts *BadgeWithLogoOpts) {
+						opts.DisplayName = tech.DisplayName
+						opts.Logo = tech.IconifyID
+						if tech.Colour != "" {
+							opts.LogoColour = tech.Colour
+						}
+					})
+				</div>
+			}
+		</div>
+	</div>
+}

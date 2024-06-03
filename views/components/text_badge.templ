@@ -1,5 +1,169 @@
 package components
 
+import (
+	"fmt"
+	"strings"
+)
+
 templ NewTextBadge(text string) {
-	<span class="my-1.5 px-2 py-1 text-xs font-semibold text-gray-700 bg-gray-200 rounded">{ text }</span>
+	@NewBadge(func(opts *BadgeOpts) {
+		opts.DisplayName = text
+	})
+}
+
+templ NewTextBadgeWithLogo(text string, logo string) {
+	@NewBadgeWithLogo(func(opts *BadgeWithLogoOpts) {
+		opts.DisplayName = text
+		opts.Logo = logo
+	})
+}
+
+type BadgeOptsFunc func(*BadgeOpts)
+
+type BadgeOpts struct {
+	DisplayName      string
+	URL              templ.SafeURL
+	BackgroundColour string
+	TextColour       string
+}
+
+func defaultBadgeOpts() BadgeOpts {
+	return BadgeOpts{
+		DisplayName:      "",
+		URL:              "",
+		BackgroundColour: "bg-gray-200",
+		TextColour:       "text-gray-700",
+	}
+}
+
+func NewBadge(opts ...BadgeOptsFunc) templ.Component {
+	badgeOpts := defaultBadgeOpts()
+	for _, opt := range opts {
+		opt(&badgeOpts)
+	}
+
+	if badgeOpts.URL != "" {
+		return newBadgeWithURL(badgeOpts)
+	}
+	return newBadge(badgeOpts)
+}
+
+templ newBadgeWithURL(opts BadgeOpts) {
+	<a href={ opts.URL } class={ badgeClass(opts.TextColour, opts.BackgroundColour) }>
+		{ opts.DisplayName }
+	</a>
+}
+
+templ newBadge(opts BadgeOpts) {
+	<a class={ badgeClass(opts.TextColour, opts.BackgroundColour) }>
+		{ opts.DisplayName }
+	</a>
+}
+
+func badgeClass(textColour, backgroundColour string) string {
+	return fmt.Sprintf("my-1.5 px-2 py-1 text-xs font-semibold %s %s rounded", textColour, backgroundColour)
+}
+
+type IconifyLogoOptsFunc func(*IconifyLogoOpts)
+
+type IconifyLogoOpts struct {
+	Width  string
+	Height string
+	Colour string
+}
+
+func defaultIconifyLogoOpts() IconifyLogoOpts {
+	return IconifyLogoOpts{
+		Width:  "24",
+		Height: "24",
+		Colour: "currentColor",
+	}
+}
+
+func NewIconifyLogoURL(logo string, opts ...IconifyLogoOptsFunc) string {
+	if logo == "" || !strings.Contains(logo, ":") {
+		return ""
+	}
+	iconifyLogoOpts := defaultIconifyLogoOpts()
+	for _, opt := range opts {
+		opt(&iconifyLogoOpts)
+	}
+
+	if iconifyLogoOpts.Colour != "currentColor" {
+		iconifyLogoOpts.Colour = strings.ReplaceAll(iconifyLogoOpts.Colour, "#", "%23")
+	}
+
+	return fmt.Sprintf(
+		"https://api.iconify.design/%s/%s.svg?width=%s&height=%s&color=%s",
+		strings.Split(logo, ":")[0], strings.Split(logo, ":")[1],
+		iconifyLogoOpts.Width, iconifyLogoOpts.Height, iconifyLogoOpts.Colour,
+	)
+}
+
+type BadgeWithLogoOptsFunc func(*BadgeWithLogoOpts)
+
+type BadgeWithLogoOpts struct {
+	DisplayName      string
+	URL              templ.SafeURL
+	BackgroundColour string
+	TextColour       string
+	Logo             string
+	LogoColour       string
+}
+
+func defaultBadgeWithLogoOpts() BadgeWithLogoOpts {
+	return BadgeWithLogoOpts{
+		DisplayName:      "",
+		URL:              "",
+		BackgroundColour: "bg-gray-200",
+		TextColour:       "text-gray-700",
+		Logo:             "",
+		LogoColour:       "currentColor",
+	}
+}
+
+func NewBadgeWithLogo(opts ...BadgeWithLogoOptsFunc) templ.Component {
+	badgeWithLogoOpts := defaultBadgeWithLogoOpts()
+	for _, opt := range opts {
+		opt(&badgeWithLogoOpts)
+	}
+
+	if badgeWithLogoOpts.URL != "" {
+		return newBadgeWithLogoWithURL(badgeWithLogoOpts)
+	}
+	return newBadgeWithLogo(badgeWithLogoOpts)
+}
+
+templ newBadgeWithLogoWithURL(opts BadgeWithLogoOpts) {
+	<a href={ opts.URL } class={ badgeClassWithLogo(opts.TextColour, opts.BackgroundColour) }>
+		if opts.Logo != "" {
+			<img
+				src={ NewIconifyLogoURL(opts.Logo, func(logoOpts *IconifyLogoOpts) {
+				logoOpts.Colour = opts.LogoColour
+			}) }
+				class="w-4 h-4 mr-1"
+				alt={ opts.Logo }
+			/>
+		}
+		{ opts.DisplayName }
+	</a>
+}
+
+templ newBadgeWithLogo(opts BadgeWithLogoOpts) {
+	<a class={ badgeClassWithLogo(opts.TextColour, opts.BackgroundColour) }>
+		if opts.Logo != "" {
+			<img
+				src={ NewIconifyLogoURL(opts.Logo, func(logoOpts *IconifyLogoOpts) {
+				logoOpts.Colour = opts.LogoColour
+			}) }
+				class="w-4 h-4 mr-1"
+				alt={ opts.Logo }
+			/>
+		}
+		{ opts.DisplayName }
+	</a>
+}
+
+func badgeClassWithLogo(textColour, backgroundColour string) string {
+	return fmt.Sprintf("my-1.5 px-2 py-1 text-xs font-semibold %s %s rounded flex items-center", textColour, backgroundColour)
 }
