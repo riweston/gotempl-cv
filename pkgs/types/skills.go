@@ -35,6 +35,7 @@ type SkillLearning struct {
 	// IconifyID uses https://icon-sets.iconify.design/?query=google+cloud to get the icon
 	// For example, the icon for Google Cloud is "logos:google-cloud"
 	IconifyID string `yaml:"iconifyID"`
+	Colour    string `yaml:"colour"`
 }
 
 // ParseData parses the data from the reader into the SkillLearning and implements the DataParser interface

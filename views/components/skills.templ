@@ -32,9 +32,9 @@ templ Skills(skillsData types.SkillData) {
 		}
 	</div>
 	<div class="mb-4">
-		<h2>I'm learning</h2>
+		<h2>I want to learn</h2>
 	</div>
-	<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+	<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 		for _, skill := range skillsData.SkillsLearning {
 			@NewSkillLearning(skill)
 		}
@@ -80,6 +80,9 @@ templ NewSkillLearning(skill types.SkillLearning) {
 				opts.Width = "32"
 				opts.Height = "32"
 				opts.Alt = skill.DisplayName
+				if skill.Colour != "" {
+					opts.Colour = skill.Colour
+				}
 			})
 			<span class="ml-2 text-sm font-semibold text-gray-500">{ skill.DisplayName }</span>
 		</div>
