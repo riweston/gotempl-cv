@@ -1,9 +1,9 @@
 jobs:
   - company: Cloudreach
-    logoPath: ./public/images/work-experience-logos/cloudreach.png
+    logoPath: ./public/images/work-experience-logos/resized/cloudreach.png
     linkedIn: https://www.linkedin.com/company/cloudreach/
     website: https://www.cloudreach.com/
-    currentRole: Principal Cloud Systems Engineer
+    currentRole: Principal Cloud Systems Developer
     startDate: October 2018
     endDate: now
     description: |-
@@ -13,21 +13,32 @@ jobs:
       solutions that met our clients' requirements.
     previousRoles:
       - "Regional Discipline Lead"
-      - "Senior Cloud Systems Engineer"
-      - "Cloud Systems Engineer"
-  - company: TFL
-    logoPath: ./public/images/work-experience-logos/cloudreach.png
-    linkedIn: https://www.linkedin.com/company/cloudreach/
-    website: https://www.cloudreach.com/
-    currentRole: Principal Cloud Systems Engineer
-    startDate: October 2018
-    endDate: now
+      - "Senior Cloud Systems Developer"
+      - "Cloud Systems Developer"
+  - company: Transport for London
+    logoPath: ./public/images/work-experience-logos/resized/tfl.png
+    linkedIn: https://www.linkedin.com/company/transport-for-london/
+    website: https://www.tfl.gov.uk/
+    currentRole: Infrastructure Engineer (Cloud & Automation)
+    startDate: April 2018
+    endDate: October 2018
     description: |-
-      As a Principal Cloud Systems Engineer, I was responsible for leading the design and
-      implementation of cloud-native applications for our clients. I was also responsible for
-      mentoring and supporting the development team, ensuring that we delivered high-quality
-      solutions that met our clients' requirements.
-    previousRoles:
-      - "Regional Discipline Lead"
-      - "Senior Cloud Systems Engineer"
-      - "Cloud Systems Engineer"
+      In my role at TFL, I was responsible for supporting the cloud infrastructure and
+      automation of the Azure platform. I was responsible for building CI/CD pipelines and
+      process to build IaC environments using Azure DevOps, cost analysis and cloud
+      resource consolidation using cloud governance and compliance tooling, and developed
+      Azure native automation tools using DSC/Runbooks/Managed Service Catalogues.
+  - company: Rackspace
+    logoPath: ./public/images/work-experience-logos/resized/rackspace.png
+    linkedIn: https://www.linkedin.com/company/rackspace/
+    website: https://www.rackspace.com/
+    currentRole: Windows Systems Administrator
+    startDate: March 2015
+    endDate: April 2018
+    description: |-
+      At Rackspace, I was a member of the Windows Systems Administration team in the
+      enterprise support team. I was responsible for providing technical support for
+      Windows Server typically hosted on VMware infrastructure. I also provided support for
+      public cloud hosted on Openstack platform, health monitoring with SCOM and New Relic,
+      and developed reusable Powershell functions for large scale execution across Rackspace
+      managed services.
