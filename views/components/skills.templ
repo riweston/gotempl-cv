@@ -2,8 +2,6 @@ package components
 
 import (
 	"github.com/riweston/gotempl-cv/pkgs/types"
-	"fmt"
-	"strings"
 )
 
 func NewSkills(filePath string) templ.Component {
@@ -63,7 +61,12 @@ templ NewSkill(skill types.Skill) {
 
 templ NewSkillIcon(skill types.Skill) {
 	<div class="flex items-center">
-		<img src={ fmt.Sprintf("https://api.iconify.design/%s/%s.svg", strings.Split(skill.IconifyID, ":")[0], strings.Split(skill.IconifyID, ":")[1]) } class="w-8 h-8" alt={ skill.DisplayName }/>
+		@NewLogo(func(opts *LogoOpts) {
+			opts.Logo = skill.IconifyID
+			opts.Width = "32"
+			opts.Height = "32"
+			opts.Alt = skill.DisplayName
+		})
 		<span class="ml-2 text-sm font-semibold text-gray-500">{ skill.DisplayName }</span>
 	</div>
 }
@@ -72,7 +75,12 @@ templ NewSkillLearning(skill types.SkillLearning) {
 	<div class="flex flex-col mb-4 mr-14">
 		<!-- Logo and name -->
 		<div class="flex items-center">
-			<img src={ fmt.Sprintf("https://api.iconify.design/%s/%s.svg", strings.Split(skill.IconifyID, ":")[0], strings.Split(skill.IconifyID, ":")[1]) } class="w-8 h-8" alt={ skill.DisplayName }/>
+			@NewLogo(func(opts *LogoOpts) {
+				opts.Logo = skill.IconifyID
+				opts.Width = "32"
+				opts.Height = "32"
+				opts.Alt = skill.DisplayName
+			})
 			<span class="ml-2 text-sm font-semibold text-gray-500">{ skill.DisplayName }</span>
 		</div>
 	</div>

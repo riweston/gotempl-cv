@@ -128,15 +128,13 @@ func NewBadgeWithLogo(opts ...BadgeWithLogoOptsFunc) templ.Component {
 templ newBadgeWithLogoWithURL(opts BadgeWithLogoOpts) {
 	<a href={ opts.URL } class={ badgeClassWithLogo(opts.TextColour, opts.BackgroundColour) }>
 		if opts.Logo != "" {
-			<img
-				src={ NewIconifyLogoURL(opts.Logo, func(logoOpts *IconifyLogoOpts) {
-					logoOpts.Height = "16"
-					logoOpts.Width = "16"
-					logoOpts.Colour = opts.LogoColour
-			}) }
-				class="w-[16px] h-[16px] mr-1"
-				alt={ opts.Logo }
-			/>
+			@NewLogo(func(logoOpts *LogoOpts) {
+				logoOpts.Logo = opts.Logo
+				logoOpts.Colour = opts.LogoColour
+				logoOpts.Width = "16"
+				logoOpts.Height = "16"
+				logoOpts.Alt = opts.Logo
+			})
 		}
 		{ opts.DisplayName }
 	</a>
@@ -145,13 +143,13 @@ templ newBadgeWithLogoWithURL(opts BadgeWithLogoOpts) {
 templ newBadgeWithLogo(opts BadgeWithLogoOpts) {
 	<a class={ badgeClassWithLogo(opts.TextColour, opts.BackgroundColour) }>
 		if opts.Logo != "" {
-			<img
-				src={ NewIconifyLogoURL(opts.Logo, func(logoOpts *IconifyLogoOpts) {
+			@NewLogo(func(logoOpts *LogoOpts) {
+				logoOpts.Logo = opts.Logo
 				logoOpts.Colour = opts.LogoColour
-			}) }
-				class="w-4 h-4 mr-1"
-				alt={ opts.Logo }
-			/>
+				logoOpts.Width = "16"
+				logoOpts.Height = "16"
+				logoOpts.Alt = opts.Logo
+			})
 		}
 		{ opts.DisplayName }
 	</a>
@@ -159,4 +157,47 @@ templ newBadgeWithLogo(opts BadgeWithLogoOpts) {
 
 func badgeClassWithLogo(textColour string, backgroundColour string) string {
 	return fmt.Sprintf(badgeClassDefaults, textColour, backgroundColour)
+}
+
+type LogoOptsFunc func(*LogoOpts)
+
+type LogoOpts struct {
+	Logo   string
+	Colour string
+	Width  string
+	Height string
+	Alt    string
+}
+
+func defaultLogoOpts() LogoOpts {
+	return LogoOpts{
+		Logo:   "",
+		Colour: "currentColor",
+		Width:  "24",
+		Height: "24",
+		Alt:    "",
+	}
+}
+
+func NewLogo(opts ...LogoOptsFunc) templ.Component {
+	logoOpts := defaultLogoOpts()
+	for _, opt := range opts {
+		opt(&logoOpts)
+	}
+
+	return newIconifyLogo(logoOpts)
+}
+
+templ newIconifyLogo(opts LogoOpts) {
+	<img
+		src={ NewIconifyLogoURL(opts.Logo, func(iconifyOpts *IconifyLogoOpts) {
+				iconifyOpts.Width = opts.Width
+				iconifyOpts.Height = opts.Height
+				if opts.Colour != "currentColor" {
+					iconifyOpts.Colour = opts.Colour
+				}
+			}) }
+		class={ fmt.Sprintf("w-[%s] h-[%s] mr-1", opts.Width, opts.Height) }
+		alt={ opts.Alt }
+	/>
 }
