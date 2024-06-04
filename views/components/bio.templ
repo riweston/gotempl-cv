@@ -61,14 +61,12 @@ templ NameHeadlineSection(bioData types.BioData) {
 templ BioDescriptionBadgesSection(bioData types.BioData) {
 	<div class="flex-1">
 		<p>{ bioData.About }</p>
-		<div class="flex flex-wrap space-x-2 mt-2">
+		<div class="flex flex-wrap">
 			for _, tag := range bioData.Tags {
-				@BioDescriptionTag(tag)
+				@NewBadge(func(opts *BadgeOpts) {
+					opts.DisplayName = tag
+				})
 			}
 		</div>
 	</div>
-}
-
-templ BioDescriptionTag(tag string) {
-	<span class="px-2 py-1 text-xs font-semibold text-gray-700 bg-gray-200 rounded">{ tag }</span>
 }

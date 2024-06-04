@@ -73,7 +73,6 @@ templ NewSkillLearning(skill types.SkillLearning) {
 		<!-- Logo and name -->
 		<div class="flex items-center">
 			<img src={ fmt.Sprintf("https://api.iconify.design/%s/%s.svg", strings.Split(skill.IconifyID, ":")[0], strings.Split(skill.IconifyID, ":")[1]) } class="w-8 h-8" alt={ skill.DisplayName }/>
-			// <span class="ml-2 text-sm font-semibold text-gray-500">{ skill.DisplayName }</span>
 			<span class="ml-2 text-sm font-semibold text-gray-500">{ skill.DisplayName }</span>
 		</div>
 	</div>

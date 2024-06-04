@@ -38,7 +38,7 @@ templ JobTile(job types.Job) {
 				<p>{ job.Description }</p>
 				if len(job.PreviousRoles) > 0 {
 					<h4>Previous Roles</h4>
-					<div class="flex space-x-2">
+					<div class="flex flex-wrap">
 						for _, role := range job.PreviousRoles {
 							@NewBadge(func(opts *BadgeOpts) {
 								opts.DisplayName = role

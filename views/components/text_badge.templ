@@ -5,18 +5,9 @@ import (
 	"strings"
 )
 
-templ NewTextBadge(text string) {
-	@NewBadge(func(opts *BadgeOpts) {
-		opts.DisplayName = text
-	})
-}
-
-templ NewTextBadgeWithLogo(text string, logo string) {
-	@NewBadgeWithLogo(func(opts *BadgeWithLogoOpts) {
-		opts.DisplayName = text
-		opts.Logo = logo
-	})
-}
+const (
+	badgeClassDefaults = "mr-2 mt-2 px-2 py-1 text-xs font-semibold %s %s rounded flex items-center"
+)
 
 type BadgeOptsFunc func(*BadgeOpts)
 
@@ -60,8 +51,8 @@ templ newBadge(opts BadgeOpts) {
 	</a>
 }
 
-func badgeClass(textColour, backgroundColour string) string {
-	return fmt.Sprintf("my-1.5 px-2 py-1 text-xs font-semibold %s %s rounded", textColour, backgroundColour)
+func badgeClass(textColour string, backgroundColour string) string {
+	return fmt.Sprintf(badgeClassDefaults, textColour, backgroundColour)
 }
 
 type IconifyLogoOptsFunc func(*IconifyLogoOpts)
@@ -139,9 +130,11 @@ templ newBadgeWithLogoWithURL(opts BadgeWithLogoOpts) {
 		if opts.Logo != "" {
 			<img
 				src={ NewIconifyLogoURL(opts.Logo, func(logoOpts *IconifyLogoOpts) {
-				logoOpts.Colour = opts.LogoColour
+					logoOpts.Height = "16"
+					logoOpts.Width = "16"
+					logoOpts.Colour = opts.LogoColour
 			}) }
-				class="w-4 h-4 mr-1"
+				class="w-[16px] h-[16px] mr-1"
 				alt={ opts.Logo }
 			/>
 		}
@@ -164,6 +157,6 @@ templ newBadgeWithLogo(opts BadgeWithLogoOpts) {
 	</a>
 }
 
-func badgeClassWithLogo(textColour, backgroundColour string) string {
-	return fmt.Sprintf("my-1.5 px-2 py-1 text-xs font-semibold %s %s rounded flex items-center", textColour, backgroundColour)
+func badgeClassWithLogo(textColour string, backgroundColour string) string {
+	return fmt.Sprintf(badgeClassDefaults, textColour, backgroundColour)
 }

@@ -26,22 +26,27 @@ templ Projects(projectsData types.ProjectData) {
 }
 
 templ ProjectTile(project types.Project) {
-	<div class="mb-4">
-		<h3>{ project.Name }</h3>
-		<p>{ project.Description }</p>
-		<div class="flex flex-wrap">
-			for _, tech := range project.Technologies {
-				<div class="mr-2">
-					//@NewTextBadgeWithLogo(tech.DisplayName, tech.IconifyID)
-					@NewBadgeWithLogo(func(opts *BadgeWithLogoOpts) {
-						opts.DisplayName = tech.DisplayName
-						opts.Logo = tech.IconifyID
-						if tech.Colour != "" {
-							opts.LogoColour = tech.Colour
-						}
-					})
+	<div class="flex items-center">
+		<div class="flex-shrink-0 mr-4">
+			<img class="w-16 h-16 rounded-full shadow-lg" src="/public/images/work-experience-logos/cloudreach.png" alt="Cloudreach logo"/>
+		</div>
+		<div>
+			<div class="mb-4">
+				<h3>{ project.Name }</h3>
+				<p>{ project.Description }</p>
+				<h4 class="mr-2">Technology:</h4>
+				<div class="flex flex-wrap">
+					for _, tech := range project.Technologies {
+						@NewBadgeWithLogo(func(opts *BadgeWithLogoOpts) {
+							opts.DisplayName = tech.DisplayName
+							opts.Logo = tech.IconifyID
+							if tech.Colour != "" {
+								opts.LogoColour = tech.Colour
+							}
+						})
+					}
 				</div>
-			}
+			</div>
 		</div>
 	</div>
 }
