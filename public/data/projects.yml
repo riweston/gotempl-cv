@@ -27,6 +27,7 @@ projects:
         iconifyID: "logos:go"
       - displayName: Pub/Sub
         iconifyID: "simple-icons:googlepubsub"
+        colour: "#326CE5"
       - displayName: Terraform
         iconifyID: "devicon:terraform"
       - displayName: Terragrunt
@@ -92,9 +93,10 @@ projects:
       - displayName: Ingress Nginx
         iconifyID: "logos:nginx"
       - displayName: Jenkins
-        iconifyID: "logos:jenkins"
+        iconifyID: "vscode-icons:file-type-jenkins"
       - displayName: Keycloak
         iconifyID: "simple-icons:keycloak"
+        colour: "#33C6E9"
       - displayName: Terraform
         iconifyID: "devicon:terraform"
       - displayName: Vault
@@ -122,9 +124,11 @@ projects:
         iconifyID: "logos:helm"
       - displayName: Inspec
         iconifyID: "simple-icons:chef"
+        colour: "#489BB8"
       - displayName: Istio
         iconifyID: "simple-icons:istio"
+        colour: "#4468AB"
       - displayName: Jenkins
-        iconifyID: "logos:jenkins"
+        iconifyID: "vscode-icons:file-type-jenkins"
       - displayName: Vault
         iconifyID: "devicon:vault"

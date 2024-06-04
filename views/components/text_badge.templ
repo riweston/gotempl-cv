@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	badgeClassDefaults = "mr-2 mt-2 px-2 py-1 text-xs font-semibold %s %s rounded flex items-center"
+	badgeClassDefaults = "%s %s px-2 py-1 text-xs font-semibold %s %s rounded flex items-center"
 )
 
 type BadgeOptsFunc func(*BadgeOpts)
@@ -16,6 +16,8 @@ type BadgeOpts struct {
 	URL              templ.SafeURL
 	BackgroundColour string
 	TextColour       string
+	MarginTop        string
+	MarginRight      string
 }
 
 func defaultBadgeOpts() BadgeOpts {
@@ -24,6 +26,8 @@ func defaultBadgeOpts() BadgeOpts {
 		URL:              "",
 		BackgroundColour: "bg-gray-200",
 		TextColour:       "text-gray-700",
+		MarginTop:        "mt-2",
+		MarginRight:      "mr-2",
 	}
 }
 
@@ -40,19 +44,19 @@ func NewBadge(opts ...BadgeOptsFunc) templ.Component {
 }
 
 templ newBadgeWithURL(opts BadgeOpts) {
-	<a href={ opts.URL } class={ badgeClass(opts.TextColour, opts.BackgroundColour) }>
+	<a href={ opts.URL } class={ badgeClass(opts.MarginTop, opts.MarginRight, opts.TextColour, opts.BackgroundColour) }>
 		{ opts.DisplayName }
 	</a>
 }
 
 templ newBadge(opts BadgeOpts) {
-	<a class={ badgeClass(opts.TextColour, opts.BackgroundColour) }>
+	<a class={ badgeClass(opts.MarginTop, opts.MarginRight, opts.TextColour, opts.BackgroundColour) }>
 		{ opts.DisplayName }
 	</a>
 }
 
-func badgeClass(textColour string, backgroundColour string) string {
-	return fmt.Sprintf(badgeClassDefaults, textColour, backgroundColour)
+func badgeClass(marginTop string, marginRight string, textColour string, backgroundColour string) string {
+	return fmt.Sprintf(badgeClassDefaults, marginTop, marginRight, textColour, backgroundColour)
 }
 
 type IconifyLogoOptsFunc func(*IconifyLogoOpts)
@@ -98,6 +102,8 @@ type BadgeWithLogoOpts struct {
 	URL              templ.SafeURL
 	BackgroundColour string
 	TextColour       string
+	MarginTop        string
+	MarginRight      string
 	Logo             string
 	LogoColour       string
 }
@@ -108,6 +114,8 @@ func defaultBadgeWithLogoOpts() BadgeWithLogoOpts {
 		URL:              "",
 		BackgroundColour: "bg-gray-200",
 		TextColour:       "text-gray-700",
+		MarginTop:        "mt-2",
+		MarginRight:      "mr-2",
 		Logo:             "",
 		LogoColour:       "currentColor",
 	}
@@ -126,7 +134,7 @@ func NewBadgeWithLogo(opts ...BadgeWithLogoOptsFunc) templ.Component {
 }
 
 templ newBadgeWithLogoWithURL(opts BadgeWithLogoOpts) {
-	<a href={ opts.URL } class={ badgeClassWithLogo(opts.TextColour, opts.BackgroundColour) }>
+	<a href={ opts.URL } class={ badgeClassWithLogo(opts.MarginTop, opts.MarginRight, opts.TextColour, opts.BackgroundColour) }>
 		if opts.Logo != "" {
 			@NewLogo(func(logoOpts *LogoOpts) {
 				logoOpts.Logo = opts.Logo
@@ -141,7 +149,7 @@ templ newBadgeWithLogoWithURL(opts BadgeWithLogoOpts) {
 }
 
 templ newBadgeWithLogo(opts BadgeWithLogoOpts) {
-	<a class={ badgeClassWithLogo(opts.TextColour, opts.BackgroundColour) }>
+	<a class={ badgeClassWithLogo(opts.MarginTop, opts.MarginRight, opts.TextColour, opts.BackgroundColour) }>
 		if opts.Logo != "" {
 			@NewLogo(func(logoOpts *LogoOpts) {
 				logoOpts.Logo = opts.Logo
@@ -155,8 +163,8 @@ templ newBadgeWithLogo(opts BadgeWithLogoOpts) {
 	</a>
 }
 
-func badgeClassWithLogo(textColour string, backgroundColour string) string {
-	return fmt.Sprintf(badgeClassDefaults, textColour, backgroundColour)
+func badgeClassWithLogo(marginTop string, marginRight string, textColour string, backgroundColour string) string {
+	return fmt.Sprintf(badgeClassDefaults, marginTop, marginRight, textColour, backgroundColour)
 }
 
 type LogoOptsFunc func(*LogoOpts)
