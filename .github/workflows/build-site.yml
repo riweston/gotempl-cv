@@ -1,0 +1,72 @@
+---
+name: "Build the site & deploy to GitHub Pages"
+on:
+  workflow_dispatch:
+  push:
+    branches: [$default-branch]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the tailwindcss
+        run: npx tailwindcss -i ./tailwind.css -o ./public/style.css
+
+      - name: Setup templ
+        run: go install github.com/a-h/templ/cmd/templ@latest
+
+      - name: Generate the templates with templ
+        run: |
+          templ generate
+
+      - name: Generate the site
+        run: go run -tags static .
+
+      - name: Copy assets to the build output directory
+        run: |
+          mkdir -p _build-output
+          cp index.html _build-output
+          cp -r public _build-output
+
+      - name: Upload artefact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: site
+          path: _build-output/
+
+  publish:
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
