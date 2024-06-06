@@ -3,7 +3,6 @@ name: "Build the site & deploy to GitHub Pages"
 on:
   workflow_dispatch:
   push:
-    branches: [$default-branch]
 
 permissions:
   contents: read
