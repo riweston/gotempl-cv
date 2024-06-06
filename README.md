@@ -21,7 +21,14 @@ All the data used to generate the CV is stored the yaml files in the `./public/d
 
 ### Running the server locally
 
-For local development, you can run either `go run main.go` or you can use the `air` tool to run the server. You can install `air` by running `go get -u github.com/cosmtrek/air`. Once you have `air` installed, you can run `air` in the root directory of the project to start the server.
+For local development, you can run either `go run main.go` or you can use the `air` tool to run the server. You can install `air` by running `go install github.com/air-verse/air@latest`. Once you have `air` installed, you can run `air` in the root directory of the project to start the server.
+
+> [!NOTE]
+> This project contains several `entrypoint_*.go` files. These files are used for different build contexts using Go build tags. The `main.go` file is used for the default build context. If you want to run the server in a different build context, you can use the `entrypoint_<context>.go` file.
+>
+> - The `dev` build context you can run `go run -tags dev main.go` or `air` in the root directory of the project.
+> - The `prod` build context you can run `go run main.go`, this will run a live server with the production build which is handy for specific configuration if deploying to Cloud Run or similar.
+> - The `static` build context you can run `go run -tags test main.go`, this will vend out a rendered html page to the root directory of the project.
 
 ### Updating the certificate data
 
