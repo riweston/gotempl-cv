@@ -34,6 +34,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Build the tailwindcss
         run: npx tailwindcss -i ./tailwind.css -o ./public/style.css
 
