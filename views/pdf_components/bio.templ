@@ -1,0 +1,20 @@
+package pdf_components
+
+import (
+	"github.com/riweston/gotempl-cv/pkgs/types"
+)
+
+func NewBio(filePath string) templ.Component {
+    bio := &types.BioData{}
+    if err := types.ReadYamlFile(filePath, bio); err != nil {
+        panic(err)
+    }
+    return Bio(*bio)
+}
+
+templ Bio(bioData types.BioData) {
+    <div class="flex items-center justify-center">
+        <img src={bioData.ProfilePicturePath} alt={bioData.Name} class="w-48 h-48 rounded-full border-4 border-gray-200"/>
+    </div>
+    <h1>{ bioData.Name }</h1>
+}

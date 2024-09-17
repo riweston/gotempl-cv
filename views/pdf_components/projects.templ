@@ -1,0 +1,68 @@
+package pdf_components
+
+import (
+    "fmt"
+
+    "github.com/riweston/gotempl-cv/pkgs/types"
+)
+
+func NewProjects(filePath string) templ.Component {
+    projects := &types.ProjectData{}
+    if err := types.ReadYamlFile(filePath, projects); err != nil {
+        panic(err)
+    }
+    return Projects(*projects)
+}
+
+templ Projects(projectsData types.ProjectData) {
+    <h1>Projects</h1>
+
+    for _, project := range projectsData.Projects[:3] {
+        @ProjectTile(project)
+    }
+}
+
+templ ProjectTile(project types.Project) {
+	<div class="flex flex-col mb-2">
+		<div class="flex">
+			<div>
+				<h2>{ project.Name }</h2>
+				<div class="grid grid-cols-1 sm:grid-cols-2 text-sm text-gray-600">
+					<div class="flex items-center">
+						@NewBadge(func(opts *BadgeOpts) {
+							opts.Logo = "fa:industry"
+							opts.DisplayName = project.Industry
+							opts.BackgroundColour = ""
+							opts.MarginTop = "mt-0"
+						})
+					</div>
+					<div class="flex items-center">
+						@NewBadge(func(opts *BadgeOpts) {
+							opts.Logo = "fa:briefcase"
+							opts.DisplayName = project.Role
+							opts.BackgroundColour = ""
+							opts.MarginTop = "mt-0"
+						})
+					</div>
+					<div class="flex items-center">
+						@NewBadge(func(opts *BadgeOpts) {
+							opts.Logo = "fa:users"
+							opts.DisplayName = fmt.Sprintf("%v People", project.TeamSize)
+							opts.BackgroundColour = ""
+							opts.MarginTop = "mt-0"
+						})
+					</div>
+					<div class="flex items-center">
+						@NewBadge(func(opts *BadgeOpts) {
+							opts.Logo = "fa:calendar"
+							opts.DisplayName = fmt.Sprintf("%v - %v", project.StartDate, project.EndDate)
+							opts.BackgroundColour = ""
+							opts.MarginTop = "mt-0"
+						})
+					</div>
+				</div>
+				<p>{ project.ShortDesc }</p>
+			</div>
+		</div>
+	</div>
+}

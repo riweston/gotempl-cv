@@ -1,0 +1,53 @@
+package pdf_components
+
+import (
+	"github.com/riweston/gotempl-cv/pkgs/types"
+)
+
+func NewWorkExperience(filePath string) templ.Component {
+    workExperience := &types.WorkExperienceData{}
+    if err := types.ReadYamlFile(filePath, workExperience); err != nil {
+        panic(err)
+    }
+    return WorkExperience(*workExperience)
+}
+
+templ WorkExperience(workExperienceData types.WorkExperienceData) {
+    <div class="mb-4">
+        <h1>Work Experience</h1>
+        for _, job := range workExperienceData.Jobs {
+            @JobTile(job)
+        }
+    </div>
+}
+
+templ JobTile(job types.Job) {
+    <div class="flex flex-col mb-2">
+        <div class="flex">
+            <div class="flex flex-col">
+                <h2>{ job.CurrentRole }</h2>
+                <div class="grid grid-cols-2">
+                    <div class="flex items-center">
+                        @NewBadge(func(opts *BadgeOpts) {
+                            opts.Logo = job.LogoPath
+                            opts.DisplayName = job.Company
+                            opts.BackgroundColour = ""
+                            opts.MarginTop = "mt-0"
+                            opts.LogoWidth = "w-6"
+                            opts.LogoHeight = "h-6"
+                        })
+                    </div>
+                    <div class="flex items-center">
+                        @NewBadge(func(opts *BadgeOpts) {
+                            opts.Logo = "fa:calendar"
+                            opts.DisplayName = job.StartDate + " - " + job.EndDate
+                            opts.BackgroundColour = ""
+                            opts.MarginTop = "mt-0"
+                        })
+                    </div>
+                </div>
+                <p>{ job.ShortDesc }</p>
+            </div>
+        </div>
+    </div>
+}

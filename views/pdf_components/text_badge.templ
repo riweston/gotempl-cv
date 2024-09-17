@@ -1,0 +1,161 @@
+package pdf_components
+
+import (
+	"fmt"
+	"path/filepath"
+	"strings"
+)
+
+const (
+	badgeClassDefaults = "%s %s pb-2 text-xs font-semibold %s %s rounded flex items-center"
+)
+
+type BadgeOptsFunc func(*BadgeOpts)
+
+type BadgeOpts struct {
+	DisplayName      string
+	URL              templ.SafeURL
+	BackgroundColour string
+	TextColour       string
+	MarginTop        string
+	MarginRight      string
+	Logo             string
+	LogoColour       string
+	LogoPadding      string
+	LogoWidth        string
+	LogoHeight       string
+	IsLocalImage     bool
+	LogoBorder       bool
+	LogoBorderWidth  string
+	LogoBorderType   string
+	LogoBorderColor  string
+}
+
+// TODO: This would probably be better using various With* functions
+// TODO: Rework some of these raw string CSS options into 'proper' CSS constructors
+func defaultBadgeOpts() BadgeOpts {
+	return BadgeOpts{
+		DisplayName:      "",
+		URL:              "",
+		BackgroundColour: "bg-gray-200",
+		TextColour:       "text-gray-700",
+		MarginTop:        "mt-2",
+		MarginRight:      "mr-2",
+		Logo:             "",
+		LogoColour:       "currentColor",
+		LogoPadding:      "mr-1",
+		LogoWidth:        "w-[16]",
+		LogoHeight:       "h-[16]",
+		IsLocalImage:     false,
+		LogoBorder:       false,
+		LogoBorderWidth:  "",
+		LogoBorderType:   "",
+		LogoBorderColor:  "",
+	}
+}
+
+func NewBadge(opts ...BadgeOptsFunc) templ.Component {
+	badgeOpts := defaultBadgeOpts()
+	for _, opt := range opts {
+		opt(&badgeOpts)
+	}
+
+	badgeOpts.IsLocalImage = isLocalImagePath(badgeOpts.Logo)
+
+	if badgeOpts.URL != "" {
+		return newBadgeWithURL(badgeOpts)
+	}
+	return newBadge(badgeOpts)
+}
+
+func badgeClass(opts BadgeOpts) string {
+	return fmt.Sprintf(badgeClassDefaults, opts.MarginTop, opts.MarginRight, opts.TextColour, opts.BackgroundColour)
+}
+
+func logoClass(opts BadgeOpts) string {
+	class := fmt.Sprintf("%s %s %s", opts.LogoWidth, opts.LogoHeight, opts.LogoPadding)
+	if opts.LogoBorder {
+		if opts.LogoBorderWidth != "" {
+			class += fmt.Sprintf(" border-%s", opts.LogoBorderWidth)
+		}
+		if opts.LogoBorderType != "" {
+			class += fmt.Sprintf(" border-%s", opts.LogoBorderType)
+			if opts.LogoBorderType == "rounded" {
+				class += " rounded-full"
+			}
+		}
+		if opts.LogoBorderColor != "" {
+			class += fmt.Sprintf(" border-%s", opts.LogoBorderColor)
+		}
+		// If LogoBorder is true but no specific options are set, add a default border
+		if opts.LogoBorderWidth == "" && opts.LogoBorderType == "" && opts.LogoBorderColor == "" {
+			class += " border border-current"
+		}
+	}
+	return class
+}
+
+func newIconifyLogoURL(opts BadgeOpts) string {
+	if opts.Logo == "" || !strings.Contains(opts.Logo, ":") {
+		return ""
+	}
+
+	color := opts.LogoColour
+	if color != "currentColor" {
+		color = strings.ReplaceAll(color, "#", "%23")
+	}
+
+	parts := strings.SplitN(opts.Logo, ":", 2)
+	if len(parts) != 2 {
+		return ""
+	}
+
+	return fmt.Sprintf(
+		"https://api.iconify.design/%s/%s.svg?width=%s&height=%s&color=%s",
+		parts[0], parts[1],
+		opts.LogoWidth, opts.LogoHeight, color,
+	)
+}
+
+func isLocalImagePath(path string) bool {
+	if path == "" {
+		return false
+	}
+	ext := strings.ToLower(filepath.Ext(path))
+	return ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext == ".gif" || ext == ".svg"
+}
+
+templ newBadgeWithURL(opts BadgeOpts) {
+	<a href={ opts.URL } class={ badgeClass(opts) }>
+		@badgeContent(opts)
+	</a>
+}
+
+templ newBadge(opts BadgeOpts) {
+	<a class={ badgeClass(opts) }>
+		@badgeContent(opts)
+	</a>
+}
+
+templ badgeContent(opts BadgeOpts) {
+	if opts.Logo != "" {
+		@logo(opts)
+	}
+	{ opts.DisplayName }
+}
+
+templ logo(opts BadgeOpts) {
+	if opts.IsLocalImage {
+		<img
+			src={ opts.Logo }
+			class={ logoClass(opts) }
+			alt={ opts.Logo }
+		/>
+	} else {
+		<img
+			src={ newIconifyLogoURL(opts) }
+			class={ logoClass(opts) }
+			alt={ opts.Logo }
+		/>
+	}
+}

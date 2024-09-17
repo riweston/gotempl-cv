@@ -1,0 +1,82 @@
+package pdf_components
+
+import (
+	"github.com/riweston/gotempl-cv/pkgs/types"
+    "strings"
+)
+
+func NewCertificates(filePath string) templ.Component {
+	certificates := &types.CertificateData{}
+	if err := types.ReadYamlFile(filePath, certificates); err != nil {
+        panic(err)
+    }
+	return Certificates(*certificates)
+}
+
+templ Certificates(certificateData types.CertificateData) {
+    <h2 class="mb-4">Certificates</h2>
+    @NewCertificateGroup(certificateData.Certificates)
+}
+
+templ CertificateTile(certificate types.Certificate) {
+    <div class="flex flex-col mb-4">
+        <div class="flex items-center">
+            @NewBadge(func(opts *BadgeOpts) {
+                opts.Logo = certificate.BadgePath
+                opts.DisplayName = certificate.DisplayName
+                opts.BackgroundColour = ""
+                opts.TextColour = "text-white"
+                opts.MarginTop = "mt-0"
+                opts.LogoWidth = "w-8"
+                opts.LogoHeight = "h-8"
+            })
+        </div>
+    </div>
+}
+
+func GroupCertificatesByIssuer(certificates []types.Certificate) map[string][]types.Certificate {
+    groupedCertificates := make(map[string][]types.Certificate)
+    for _, certificate := range certificates {
+        groupedCertificates[certificate.Issuer] = append(groupedCertificates[certificate.Issuer], certificate)
+    }
+    return groupedCertificates
+}
+
+func NewCertificateGroup(certificates []types.Certificate) templ.Component {
+    groupedCertificates := GroupCertificatesByIssuer(certificates)
+    return CertificateGroup(groupedCertificates)
+}
+
+templ CertificateGroup(groupedCertificates map[string][]types.Certificate) {
+    for issuer, certificates := range groupedCertificates {
+        <div class="mb-1">
+            <h3 class="mb-2">{ issuer }</h3>
+            for _, certificate := range certificates {
+                if strings.Contains(certificate.DisplayName, "Certified Kubernetes") {
+                    @NewBadge(func(opts *BadgeOpts) {
+                        opts.Logo = "skill-icons:kubernetes"
+                        opts.DisplayName = certificate.DisplayName
+                        opts.BackgroundColour = ""
+                        opts.TextColour = "text-white"
+                        opts.MarginTop = "mt-0"
+                        opts.LogoWidth = "w-6"
+                        opts.LogoHeight = "h-6"
+                        opts.LogoPadding = "mr-2"
+                    })
+                }
+                if issuer == "Google Cloud" {
+                    @NewBadge(func(opts *BadgeOpts) {
+                        opts.Logo = "skill-icons:gcp-light"
+                        opts.DisplayName = certificate.DisplayName
+                        opts.BackgroundColour = ""
+                        opts.TextColour = "text-white"
+                        opts.MarginTop = "mt-0"
+                        opts.LogoWidth = "w-6"
+                        opts.LogoHeight = "h-6"
+                        opts.LogoPadding = "mr-2"
+                    })
+                }
+            }
+        </div>
+    }
+}
