@@ -34,6 +34,10 @@ For local development, you can run either `go run main.go` or you can use the `a
 
 The certificate data is stored in the `certificates_gen.yml` file in the `./public/data` directory. You can add your own certificates to this file to display them on the CV or you can run the helper command to generate the certificates data for you including the certificate images. To do this, run `go run ./cmd/generate-certs/main.go <credly username>` in the root directory of the project. This will generate the certificates data for you from the credly API.
 
+### PDF generation
+
+This project includes a separate view for a PDF version of the CV better suited for printing. You can access this view by going to `/pdf` on the server. This uses it's own tailwindcss file (`tailwind.pdf.css`) to ensure that the layout is correct for printing.
+
 ## How can I contribute?
 
 If you see any issues with the code, or have any suggestions for improvements, feel free to open an issue or a pull request.
