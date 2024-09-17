@@ -64,6 +64,17 @@ jobs:
           htmlFile: ./_build-output/pdf.html
           outputFile: ./_build-output/cv.pdf
 
+      - name: Upload artefact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _build-output/
+
+      - name: Upload the PDF
+        uses: actions/upload-artifact@v2
+        with:
+          name: cv
+          path: _build-output/cv.pdf
+
   publish:
     if: github.ref == 'refs/heads/main'
     environment:
