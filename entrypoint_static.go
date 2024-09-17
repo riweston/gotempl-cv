@@ -27,4 +27,22 @@ func entrypoint() {
 		log.Fatal(err)
 	}
 	log.Println("Rendered index.html")
+
+	log.Println("Creating pdf.html")
+	pdfHTML, err := os.Create("pdf.html")
+	if err != nil {
+		log.Println("Failed to create pdf.html")
+		log.Fatal(err)
+	}
+	defer pdfHTML.Close()
+
+	log.Println("Creating index.pdf")
+	if err := layout.PDFLayout().Render(context.Background(), os.Stdout); err != nil {
+		log.Println("Failed to render PDF")
+		log.Fatal(err)
+	}
+	log.Println("Rendered index.pdf")
+
+	log.Println("Converting pdf.html to pdf")
+
 }
