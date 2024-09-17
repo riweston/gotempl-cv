@@ -1,0 +1,85 @@
+package pdf_components
+
+import (
+	"github.com/riweston/gotempl-cv/pkgs/types"
+)
+
+func NewContact(filePath string) templ.Component {
+    contact := &types.ContactData{}
+    if err := types.ReadYamlFile(filePath, contact); err != nil {
+        panic(err)
+    }
+    return Contact(*contact)
+}
+
+templ Contact(contactData types.ContactData) {
+    <h2>Contact</h2>
+    <div class="ml-[1px]">
+    @NewBadge(func(opts *BadgeOpts) {
+        opts.Logo = "fa:map-marker"
+        opts.DisplayName = contactData.Location
+        opts.BackgroundColour = ""
+        opts.LogoColour = "white"
+        opts.LogoWidth = "w-5"
+        opts.LogoHeight = "h-5"
+        opts.TextColour = "text-white"
+        opts.MarginTop = "mt-0"
+        opts.LogoPadding = "mr-3"
+    })
+    @NewBadge(func(opts *BadgeOpts) {
+        opts.Logo = "ic:sharp-alternate-email"
+        opts.DisplayName = contactData.Email
+        opts.BackgroundColour = ""
+        opts.LogoColour = "white"
+        opts.LogoWidth = "w-5"
+        opts.LogoHeight = "h-5"
+        opts.TextColour = "text-white"
+        opts.MarginTop = "mt-0"
+        opts.LogoPadding = "mr-3"
+    })
+    @NewBadge(func(opts *BadgeOpts) {
+        opts.Logo = "fa:phone"
+        opts.DisplayName = contactData.Phone
+        opts.BackgroundColour = ""
+        opts.LogoColour = "white"
+        opts.LogoWidth = "w-5"
+        opts.LogoHeight = "h-5"
+        opts.TextColour = "text-white"
+        opts.MarginTop = "mt-0"
+        opts.LogoPadding = "mr-3"
+    })
+    // @NewBadge(func(opts *BadgeOpts) {
+    //     opts.Logo = "fa:link"
+    //     opts.DisplayName = contactData.Website
+    //     opts.BackgroundColour = ""
+    //     opts.LogoColour = "white"
+    //     opts.LogoWidth = "w-5"
+    //     opts.LogoHeight = "h-5"
+    //     opts.TextColour = "text-white"
+    //     opts.MarginTop = "mt-0"
+    //     opts.LogoPadding = "mr-3"
+    // })
+    @NewBadge(func(opts *BadgeOpts) {
+        opts.Logo = "fa:linkedin"
+        opts.DisplayName = contactData.LinkedIn
+        opts.BackgroundColour = ""
+        opts.LogoColour = "white"
+        opts.LogoWidth = "w-5"
+        opts.LogoHeight = "h-5"
+        opts.TextColour = "text-white"
+        opts.MarginTop = "mt-0"
+        opts.LogoPadding = "mr-3"
+    })
+    @NewBadge(func(opts *BadgeOpts) {
+        opts.Logo = "fa:github"
+        opts.DisplayName = contactData.GitHub
+        opts.BackgroundColour = ""
+        opts.LogoColour = "white"
+        opts.LogoWidth = "w-5"
+        opts.LogoHeight = "h-5"
+        opts.TextColour = "text-white"
+        opts.MarginTop = "mt-0"
+        opts.LogoPadding = "mr-3"
+    })
+    </div>
+}
