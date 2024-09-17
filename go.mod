@@ -3,7 +3,7 @@ module github.com/riweston/gotempl-cv
 go 1.22.1
 
 require (
-	github.com/a-h/templ v0.2.680
+	github.com/a-h/templ v0.2.771
 	github.com/stretchr/testify v1.9.0
 	gopkg.in/yaml.v3 v3.0.1
 )
