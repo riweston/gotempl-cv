@@ -37,7 +37,8 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Build the tailwindcss
-        run: npx tailwindcss -i ./tailwind.css -o ./public/style.css
+        run: |
+          npx tailwindcss -i ./tailwind.css -o ./public/style.css
 
       - name: Setup templ
         run: go install github.com/a-h/templ/cmd/templ@latest

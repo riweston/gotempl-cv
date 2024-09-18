@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .a4-container {
+        width: 210mm;
+        height: 297mm;
+        @apply my-5 mx-auto shadow-lg overflow-hidden;
+    }
+    .content-wrapper {
+        @apply flex h-full;
+    }
+    .left-section {
+        @apply w-1/3 bg-gradient-to-b from-purple-600 to-blue-600 text-white pl-6 pr-6;
+        /* @apply w-1/3 bg-gray-400 text-white pl-6 pr-6; */
+    }
+    .main-section {
+        @apply w-2/3 bg-white p-6;
+    }
+
+    /* Skill bar styles */
+    .skill-bar {
+        @apply flex space-x-1;
+    }
+    .skill-level {
+        @apply w-5 h-2 rounded-[2px];
+    }
+    .skill-level-filled {
+        @apply bg-yellow-300;
+    }
+    .skill-level-empty {
+        @apply bg-white;
+    }
+
+    /* Text styles */
+    .left-section h1 {
+        @apply text-5xl font-bold underline underline-offset-1 pt-6 mb-2;
+    }
+    .left-section h2 {
+        @apply text-xl font-semibold mb-2 mt-4;
+    }
+    .left-section p {
+        @apply text-xs;
+    }
+    .left-section span {
+        @apply text-xs;
+    }
+    .left-section ul {
+        @apply text-xs list-disc;
+    }
+
+    .main-section h1 {
+        @apply text-3xl font-bold mb-1;
+    }
+    .main-section h2 {
+        @apply text-sm font-bold mb-1;
+    }
+    .main-section h3 {
+        @apply text-sm font-semibold;
+    }
+    .main-section h4 {
+        @apply text-sm;
+    }
+    .main-section p {
+        @apply text-xs;
+    }
+    .main-section a {
+        @apply text-xs text-black;
+    }
+
+    /* Project styles */
+    .project-tag {
+        @apply mt-0 mr-2 px-2 py-1 text-xs font-semibold text-gray-500 rounded flex items-center;
+    }
+    .project-tag svg {
+        @apply w-4 h-4 mr-1;
+    }
+}
+
+@media screen {
+    body {
+        @apply bg-gray-100 flex justify-center items-start min-h-screen;
+    }
+    .a4-container {
+        @apply max-h-screen;
+    }
+    .main-section {
+        @apply overflow-y-auto;
+    }
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+    body {
+        @apply m-0 p-0;
+    }
+    .a4-container {
+        @apply my-0 mx-0 shadow-none;
+    }
+    .main-section {
+        @apply overflow-visible;
+    }
+}
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-2xl font-bold ;
+    }
+    h2 {
+        @apply text-xl ;
+    }
+    h3 {
+        @apply text-sm font-semibold text-gray-600;
+    }
+    h4 {
+        @apply text-xs font-semibold text-gray-500;
+    }
+    h5 {
+        @apply text-xs font-semibold text-gray-400;
+    }
+    p {
+        @apply text-xs font-semibold text-gray-500 my-1;
+    }
+} */

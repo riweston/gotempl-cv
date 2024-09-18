@@ -14,6 +14,7 @@ type Project struct {
 	Role         string       `yaml:"role"`
 	TeamSize     int          `yaml:"teamSize"`
 	Description  string       `yaml:"description"`
+	ShortDesc    string       `yaml:"shortDesc"`
 	Technologies []Technology `yaml:"technologies"`
 }
 

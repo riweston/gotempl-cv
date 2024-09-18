@@ -7,10 +7,9 @@ jobs:
     startDate: October 2018
     endDate: now
     description: |-
-      As a Principal Cloud Systems Engineer, I was responsible for leading the design and
-      implementation of cloud-native applications for our clients. I was also responsible for
-      mentoring and supporting the development team, ensuring that we delivered high-quality
-      solutions that met our clients' requirements.
+      As a Principal Cloud Systems Engineer, I lead the design and implementation of cloud-native applications for our clients. I've progressed to become a key technical leader within the organization, serving as a trusted advisor on complex cloud solutions. My responsibilities include architecting sophisticated cloud infrastructures, optimizing performance and cost-efficiency, and ensuring adherence to best practices in cloud security and compliance. I mentor and support the development team, fostering a culture of innovation and excellence. Throughout my tenure, I've successfully led multiple high-impact projects, demonstrating expertise across various cloud platforms and DevOps practices.
+    shortDesc: |-
+      As a Principal Cloud Systems Engineer, I lead the design and implementation of cloud-native applications for our clients. I've progressed to become a key technical leader within the organization, serving as a trusted advisor on complex cloud solutions. My responsibilities include architecting sophisticated cloud infrastructures, optimizing performance and cost-efficiency, and ensuring adherence to best practices in cloud security and compliance. I mentor and support the development team, fostering a culture of innovation and excellence. Throughout my tenure, I've successfully led multiple high-impact projects, demonstrating expertise across various cloud platforms and DevOps practices.
     previousRoles:
       - "Regional Discipline Lead"
       - "Senior Cloud Systems Developer"
@@ -28,6 +27,8 @@ jobs:
       process to build IaC environments using Azure DevOps, cost analysis and cloud
       resource consolidation using cloud governance and compliance tooling, and developed
       Azure native automation tools using DSC/Runbooks/Managed Service Catalogues.
+    shortDesc: |-
+      Supported cloud infrastructure and automation on the Azure platform. Built CI/CD pipelines, implemented IaC environments, and developed Azure native automation tools.
   - company: Rackspace
     logoPath: ./public/images/work-experience-logos/resized/rackspace.png
     linkedIn: https://www.linkedin.com/company/rackspace/
@@ -42,3 +43,5 @@ jobs:
       public cloud hosted on Openstack platform, health monitoring with SCOM and New Relic,
       and developed reusable Powershell functions for large scale execution across Rackspace
       managed services.
+    shortDesc: |-
+      Provided technical support for Windows Server environments, including private cloud hosting on VMWare. Developed reusable PowerShell functions for large-scale execution across managed services.

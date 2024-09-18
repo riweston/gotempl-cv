@@ -12,6 +12,8 @@ projects:
       the organisation. I also led the development of the platform, which was built using
       a combination of cloud-native technologies delivered by GCP, Github Actions and
       Terraform.
+    shortDesc: |-
+      Led the design and development of a self-service platform for creating and managing GCP landing zones. Implemented cloud-native technologies using GCP, GitHub Actions, and Terraform to streamline environment provisioning. The platform significantly reduced provisioning time and enhanced developer productivity, leading to its adoption across multiple departments.
     technologies:
       - displayName: Cloud Functions
         iconifyID: "logos:google-cloud-functions"
@@ -44,6 +46,8 @@ projects:
       led to the design and implementation of a Kubernetes platform on Azure with a view
       to shifting the organisation to a GitOps model. Additional features included canary
       deployments, automated testing and ephemeral environments to support UAT and QA.
+    shortDesc: |-
+      Designed and implemented a GitOps-based platform for deploying and managing AKS clusters in a banking environment. Features included canary deployments, automated testing, and ephemeral environments for UAT and QA. This project marked a shift in the organization's DevOps practices, resulting in faster, more reliable software delivery and improved collaboration between teams.
     technologies:
       - displayName: AKS
         iconifyID: "devicon:kubernetes"
@@ -77,6 +81,8 @@ projects:
       platform was easy to operate and maintain. To achieve this I designed a number of
       deployment patterns to facilitate workload identity, automated DNS and global load
       balancing.
+    shortDesc: |-
+      Planned and implemented a Kubernetes platform on Azure to host shared services supporting a new SaaS product. Incorporated essential components such as Vault, Consul, and Keycloak. Focused on standardisation and automation, designing deployment patterns for workload identity, automated DNS, and global load balancing. This project laid the foundation for the company's microservices architecture, enabling rapid development while maintaining high availability and security standards.
     technologies:
       - displayName: AKS
         iconifyID: "devicon:kubernetes"

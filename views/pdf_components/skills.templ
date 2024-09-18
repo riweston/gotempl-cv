@@ -1,0 +1,40 @@
+package pdf_components
+
+import (
+	"github.com/riweston/gotempl-cv/pkgs/types"
+)
+
+func NewSkills(filePath string) templ.Component {
+    skills := &types.SkillData{}
+    if err := types.ReadYamlFile(filePath, skills); err != nil {
+        panic(err)
+    }
+    return Skills(*skills)
+}
+
+templ Skills(skillsData types.SkillData) {
+    <h2>Skills</h2>
+
+    for _, skill := range skillsData.Skills {
+        @NewSkill(skill)
+    }
+}
+
+templ NewSkill(skill types.Skill) {
+    <div class="flex flex-row items-center mb-2">
+        <div class="w-1/2 pr-2">
+            <span class="text-sm font-semibold">{ skill.DisplayName }</span>
+        </div>
+        <!-- Level boxes -->
+        <div class="w-1/2 flex">
+            <div class="flex space-x-1">
+                for i := 0; i < skill.Level; i++ {
+                    <div class="skill-level skill-level-filled"></div>
+                }
+                for i := skill.Level; i < 5; i++ {
+                    <div class="skill-level skill-level-empty"></div>
+                }
+            </div>
+        </div>
+    </div>
+}

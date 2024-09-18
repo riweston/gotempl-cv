@@ -16,5 +16,6 @@ func entrypoint() {
 	log.Println("Running production server")
 	http.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public"))))
 	http.Handle("/", templ.Handler(layout.Layout()))
+	http.Handle("/pdf", templ.Handler(layout.PDFLayout()))
 	http.ListenAndServe(":8080", nil)
 }

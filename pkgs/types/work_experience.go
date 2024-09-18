@@ -15,6 +15,7 @@ type Job struct {
 	StartDate     string   `yaml:"startDate"`
 	EndDate       string   `yaml:"endDate"`
 	Description   string   `yaml:"description"`
+	ShortDesc     string   `yaml:"shortDesc"`
 	PreviousRoles []string `yaml:"previousRoles"`
 }
 

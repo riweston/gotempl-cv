@@ -1,0 +1,37 @@
+package layout
+
+import (
+    components "github.com/riweston/gotempl-cv/views/pdf_components"
+)
+
+templ PDFLayout() {
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8"/>
+            <title>Richard Weston</title>
+            <link href="./public/style.pdf.css" rel="stylesheet"/>
+        </head>
+        <body>
+            <div class="a4-container">
+                <div class="flex flex-row h-full">
+                    <!-- Left Sidebar -->
+                    <div class="left-section">
+                        <div class="pt-8">
+                            @components.NewBio("./public/data/bio.yml")
+                            @components.NewSkills("./public/data/skills.yml")
+                            @components.NewCertificates("./public/data/certificates_gen.yml")
+                            @components.NewContact("./public/data/contact.yml")
+                        </div>
+                    </div>
+                    <!-- Right Content -->
+                    <div class="main-section">
+                        <div class="pt-4">
+                            @components.NewWorkExperience("./public/data/work_experience.yml")
+                            @components.NewProjects("./public/data/projects.yml")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
+}

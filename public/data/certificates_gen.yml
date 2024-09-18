@@ -1,21 +1,21 @@
 certificates:
-    - displayName: 'CKA: Certified Kubernetes Administrator'
-      issuer: The Linux Foundation
-      badgePath: public/images/certificate-badges/cka-certified-kubernetes-administrator.png
-      issueDate: "2022-10-23"
-      expireDate: "2025-10-23"
-    - displayName: 'CKAD: Certified Kubernetes Application Developer'
-      issuer: The Linux Foundation
-      badgePath: public/images/certificate-badges/ckad-certified-kubernetes-application-developer.png
-      issueDate: "2021-10-23"
-      expireDate: "2024-10-23"
-    - displayName: Professional Cloud Architect Certification
-      issuer: Google Cloud
-      badgePath: public/images/certificate-badges/professional-cloud-architect-certification.png
-      issueDate: "2024-01-22"
-      expireDate: "2026-01-22"
-    - displayName: Professional Cloud Developer Certification
-      issuer: Google Cloud
-      badgePath: public/images/certificate-badges/professional-cloud-developer-certification.png
-      issueDate: "2023-04-13"
-      expireDate: "2025-04-13"
+  - displayName: "CKA: Certified Kubernetes Administrator"
+    issuer: The Linux Foundation
+    badgePath: public/images/certificate-badges/cka-certified-kubernetes-administrator.png
+    issueDate: "2022-10-23"
+    expireDate: "2025-10-23"
+  - displayName: "CKAD: Certified Kubernetes Application Developer"
+    issuer: The Linux Foundation
+    badgePath: public/images/certificate-badges/ckad-certified-kubernetes-application-developer.png
+    issueDate: "2021-10-23"
+    expireDate: "2024-10-23"
+  - displayName: Professional Cloud Architect Certification
+    issuer: Google Cloud
+    badgePath: public/images/certificate-badges/professional-cloud-architect-certification.png
+    issueDate: "2024-01-22"
+    expireDate: "2026-01-22"
+  - displayName: Professional Cloud Developer Certification
+    issuer: Google Cloud
+    badgePath: public/images/certificate-badges/professional-cloud-developer-certification.png
+    issueDate: "2023-04-13"
+    expireDate: "2025-04-13"
