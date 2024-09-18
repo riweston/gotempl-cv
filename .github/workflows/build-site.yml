@@ -39,7 +39,6 @@ jobs:
       - name: Build the tailwindcss
         run: |
           npx tailwindcss -i ./tailwind.css -o ./public/style.css
-          npx tailwindcss -i ./tailwind.pdf.css -o ./public/style.pdf.css
 
       - name: Setup templ
         run: go install github.com/a-h/templ/cmd/templ@latest
@@ -55,25 +54,12 @@ jobs:
         run: |
           mkdir -p _build-output
           cp index.html _build-output
-          cp -r pdf.html _build-output
           cp -r public _build-output
-
-      - name: html to pdf
-        uses: fifsky/html-to-pdf-action@master
-        with:
-          htmlFile: ./_build-output/pdf.html
-          outputFile: ./_build-output/cv.pdf
 
       - name: Upload artefact
         uses: actions/upload-pages-artifact@v3
         with:
           path: _build-output/
-
-      - name: Upload the PDF
-        uses: actions/upload-artifact@v4
-        with:
-          name: cv
-          path: _build-output/cv.pdf
 
   publish:
     if: github.ref == 'refs/heads/main'
