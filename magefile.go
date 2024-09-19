@@ -18,8 +18,8 @@ import (
 func BuildCSS(inputFileName string, outputFileName string) error {
 	mg.Deps(InstallNodeDeps)
 	if err := sh.Run("npx", "tailwindcss",
-		"-i", "assets/css/"+inputFileName,
-		"-o", "public/css/"+outputFileName); err != nil {
+		"-i", inputFileName,
+		"-o", "public/"+outputFileName); err != nil {
 		log.Error("Failed to build CSS")
 		return err
 	}
