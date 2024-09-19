@@ -3,7 +3,7 @@ module github.com/riweston/gotempl-cv
 go 1.22.1
 
 require (
-	github.com/a-h/templ v0.2.771
+	github.com/a-h/templ v0.2.778
 	github.com/charmbracelet/log v0.4.0
 	github.com/magefile/mage v1.15.0
 	github.com/stretchr/testify v1.9.0
