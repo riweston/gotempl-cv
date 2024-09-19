@@ -13,6 +13,9 @@ module.exports = {
       height: {
         "a4-height": "297mm",
       },
+      fontFamily: {
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
     },
   },
   plugins: [
