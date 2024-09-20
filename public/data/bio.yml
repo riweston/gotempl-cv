@@ -3,17 +3,12 @@ profilePicturePath: ./public/profile.jpeg
 headline: Senior Cloud Systems Developer
 location: Bristol, UK or Berlin, DE
 email: stef@bear.army
-# about: |-
-#   A Principal Cloud Systems Developer with over 10 years of experience in the IT industry.
-#   I have a strong background in developing and maintaining cloud-native applications, and
-#   I am passionate about cloud computing, DevOps culture and platform engineering. I am a
-#   strong advocate for automation and quality engineering practices, and as a technical
-#   leader, supporting and mentoring teams so that we all grow together.
 about: |-
-  Principal Cloud Systems Developer with 10+ years of expertise. Combining deep technical
-  knowledge in cloud-native applications and DevOps with impactful team leadership.
-  Passionate about innovative cloud solutions and nurturing engineering talent.
-  Drives excellence through automation, quality practices, and collaborative growth.
+  Senior Cloud Systems Developer with 10+ years of expertise.
+# Combining deep technical
+# knowledge in cloud-native applications and DevOps with impactful team leadership.
+# Passionate about innovative cloud solutions and nurturing engineering talent.
+# Drives excellence through automation, quality practices, and collaborative growth.
 tags:
   - Open to opportunities
   - Remote
