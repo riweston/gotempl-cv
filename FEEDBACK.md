@@ -1,0 +1,1 @@
+something nicely erroring if you do say "2-5" as teamsize in public/data/projects.yml

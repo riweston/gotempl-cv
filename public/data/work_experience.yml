@@ -3,45 +3,40 @@ jobs:
     logoPath: ./public/images/work-experience-logos/resized/cloudreach.png
     linkedIn: https://www.linkedin.com/company/cloudreach/
     website: https://www.cloudreach.com/
-    currentRole: Principal Cloud Systems Developer
-    startDate: October 2018
+    currentRole: Senior Cloud Systems Developer Lead
+    startDate: Jan 2019
     endDate: now
     description: |-
       As a Principal Cloud Systems Engineer, I lead the design and implementation of cloud-native applications for our clients. I've progressed to become a key technical leader within the organization, serving as a trusted advisor on complex cloud solutions. My responsibilities include architecting sophisticated cloud infrastructures, optimizing performance and cost-efficiency, and ensuring adherence to best practices in cloud security and compliance. I mentor and support the development team, fostering a culture of innovation and excellence. Throughout my tenure, I've successfully led multiple high-impact projects, demonstrating expertise across various cloud platforms and DevOps practices.
     shortDesc: |-
-      As a Principal Cloud Systems Engineer, I lead the design and implementation of cloud-native applications for our clients. I've progressed to become a key technical leader within the organization, serving as a trusted advisor on complex cloud solutions. My responsibilities include architecting sophisticated cloud infrastructures, optimizing performance and cost-efficiency, and ensuring adherence to best practices in cloud security and compliance. I mentor and support the development team, fostering a culture of innovation and excellence. Throughout my tenure, I've successfully led multiple high-impact projects, demonstrating expertise across various cloud platforms and DevOps practices.
+      abc
     previousRoles:
-      - "Regional Discipline Lead"
       - "Senior Cloud Systems Developer"
       - "Cloud Systems Developer"
-  - company: Transport for London
-    logoPath: ./public/images/work-experience-logos/resized/tfl.png
-    linkedIn: https://www.linkedin.com/company/transport-for-london/
-    website: https://www.tfl.gov.uk/
-    currentRole: Infrastructure Engineer (Cloud & Automation)
-    startDate: April 2018
-    endDate: October 2018
-    description: |-
-      In my role at TFL, I was responsible for supporting the cloud infrastructure and
-      automation of the Azure platform. I was responsible for building CI/CD pipelines and
-      process to build IaC environments using Azure DevOps, cost analysis and cloud
-      resource consolidation using cloud governance and compliance tooling, and developed
-      Azure native automation tools using DSC/Runbooks/Managed Service Catalogues.
-    shortDesc: |-
-      Supported cloud infrastructure and automation on the Azure platform. Built CI/CD pipelines, implemented IaC environments, and developed Azure native automation tools.
-  - company: Rackspace
-    logoPath: ./public/images/work-experience-logos/resized/rackspace.png
-    linkedIn: https://www.linkedin.com/company/rackspace/
-    website: https://www.rackspace.com/
-    currentRole: Windows Systems Administrator
-    startDate: March 2015
-    endDate: April 2018
-    description: |-
-      At Rackspace, I was a member of the Windows Systems Administration team in the
-      enterprise support team. I was responsible for providing technical support for
-      Windows Server typically hosted on VMware infrastructure. I also provided support for
-      public cloud hosted on Openstack platform, health monitoring with SCOM and New Relic,
-      and developed reusable Powershell functions for large scale execution across Rackspace
-      managed services.
-    shortDesc: |-
-      Provided technical support for Windows Server environments, including private cloud hosting on VMWare. Developed reusable PowerShell functions for large-scale execution across managed services.
+  # - company: Rackspace
+  #   logoPath: ./public/images/work-experience-logos/resized/rackspace.png
+  #   linkedIn: https://www.linkedin.com/company/rackspace/
+  #   website: https://www.rackspace.com/
+  #   currentRole: Windows Systems Administrator II
+  #   startDate: October 2015
+  #   endDate: Dec 2018
+  #   description: |-
+  #     At Rackspace, I was a member of the Windows Systems Administration team in the
+  #     enterprise support team. I was responsible for providing technical support for
+  #     Windows Server typically hosted on VMware infrastructure. I also provided support for
+  #     public cloud hosted on Openstack platform, health monitoring with SCOM and New Relic,
+  #     and developed reusable Powershell functions for large scale execution across Rackspace
+  #     managed services.
+  #   shortDesc: |-
+  #     Provided technical support for Windows Server environments, including private cloud hosting on VMWare. Developed reusable PowerShell functions for large-scale execution across managed services.
+  # - company: Silixa Ltd
+  #   logoPath: ./public/images/work-experience-logos/resized/silixa.png
+  #   linkedIn: https://www.linkedin.com/company/silixa-ltd./
+  #   website: https://silixa.com/
+  #   currentRole: IT Manager
+  #   startDate: June 2013
+  #   endDate: September 2015
+  #   description: |-
+  #     At Silixa, I came in to create an internal IT function to replace an outsourced service. My role involved the architecture, testing, purchasing of the entire company as well as oversight of the team of engineers responsible for day to day running, documentations and budgeting of all infrastructure. Also providing a final point of escalation to the team. Management of the four contracted tech support engineers, all policies and procedures, ISO 9001 compliance and writing and maintaining a workable business continuity plan was also inside my remit.
+  #   shortDesc: |-
+  #     Provided technical support for Windows Server environments, including private cloud hosting on VMWare. Developed reusable PowerShell functions for large-scale execution across managed services.

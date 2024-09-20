@@ -1,28 +1,28 @@
 skills:
   - displayName: Azure
     iconifyID: logos:microsoft-azure
-    level: 4
-  - displayName: Google Cloud
-    iconifyID: logos:google-cloud
-    level: 4
+    level: 5
+  # - displayName: Google Cloud
+  #   iconifyID: logos:google-cloud
+  #   level: 4
   - displayName: Terraform
     iconifyID: logos:terraform-icon
     level: 5
   - displayName: GitHub Actions
     iconifyID: devicon:githubactions
-    level: 5
+    level: 3
   - displayName: Bash
     iconifyID: mdi:bash
     level: 4
-  - displayName: Go
-    iconifyID: skill-icons:golang
-    level: 3
-  - displayName: Python
-    iconifyID: logos:python
-    level: 3
+  # - displayName: Go
+  #   iconifyID: skill-icons:golang
+  #   level: 3
+  # - displayName: Python
+  #   iconifyID: logos:python
+  #   level: 3
   - displayName: Kubernetes
     iconifyID: devicon:kubernetes
-    level: 4
+    level: 3
 skillsLearning:
   - displayName: Nix
     iconifyID: devicon:nixos
